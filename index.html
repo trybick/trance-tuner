@@ -3,14 +3,24 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Hello World!</title>
+  <title>Tray Tuner</title>
 </head>
 
 <body>
-  <h1>Hello World!</h1>
-  We are using Node.js <span id="node-version"></span>,
-  Chromium <span id="chrome-version"></span>,
-  and Electron <span id="electron-version"></span>.
+  <h1>Tray Tuner</h1>
+
+  <!-- Default html controls -->
+  <!-- <audio src="http://us2.ah.fm/192k/;stream/1" controls>
+    Audio test
+  </audio> -->
+
+  <audio id="player" src="http://us2.ah.fm/192k/;stream/1"></audio>
+  <div>
+    <button onclick="document.getElementById('player').play()">Play</button>
+    <button onclick="document.getElementById('player').pause()">Pause</button>
+    <button onclick="document.getElementById('player').volume += 0.1">Vol +</button>
+    <button onclick="document.getElementById('player').volume -= 0.1">Vol -</button>
+  </div>
 </body>
 
 </html>

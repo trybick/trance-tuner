@@ -12,7 +12,6 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, '../index.html'));
   mainWindow.webContents.openDevTools();
 
-  // Dereference the window object
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
@@ -20,6 +19,7 @@ function createWindow() {
 
 app.on('ready', createWindow);
 
+// Optional Mac options - may want this later
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
