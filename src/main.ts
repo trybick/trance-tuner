@@ -19,7 +19,21 @@ function createTrayMenu() {
   ]);
 
   tray.setContextMenu(contextMenu);
-  tray.setToolTip('This is my application.');
+  tray.setToolTip('Tray Tuner');
+
+  // Ignore double click events for the tray icon
+  // tray.setIgnoreDoubleClickEvents(true);
+
+  tray.on('right-click', () => {
+    // Would this line work to open the settings window?
+    mainWindow.show();
+
+    // right-click --> Open menu
+  });
+
+  tray.on('click', () => {
+    // Toggle play
+  });
 }
 
 function createWindow() {
