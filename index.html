@@ -14,8 +14,8 @@
   <div>
     <button onclick="togglePlay()">Toggle</button>
 
-    <button onclick="document.getElementById('player').volume += 0.1">Vol +</button>
-    <button onclick="document.getElementById('player').volume -= 0.1">Vol -</button>
+    <button onclick="increaseVolume()">Vol +</button>
+    <button onclick="decreaseVolume()">Vol -</button>
 
   </div>
 
@@ -25,6 +25,14 @@
 
     function togglePlay() {
       return player.paused ? player.play() : player.pause();
+    }
+
+    function increaseVolume() {
+      return player.volume += 0.1;
+    }
+
+    function decreaseVolume() {
+      return player.volume -= 0.1;
     }
 
 
