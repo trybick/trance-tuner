@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "start": "concurrently \"npm run watch\" \"electron ./dist/main.js\""
+    "concur": "concurrently \"npm run watch\" \"electron ./dist/main.js\"",
+    "start": "npm run build && electron ./dist/main.js"
   },
   "repository": "",
   "keywords": [],
