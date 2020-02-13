@@ -11,9 +11,9 @@ function createTrayMenu() {
   const contextMenu = Menu.buildFromTemplate([
     { label: 'radio', type: 'radio', checked: true },
     {
-      label: 'Click me ',
-      click: async e => {
-        console.log('e', e);
+      label: 'Quit',
+      click: async () => {
+        app.quit();
       },
     },
   ]);
