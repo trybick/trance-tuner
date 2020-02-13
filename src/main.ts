@@ -37,7 +37,7 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  app.dock.hide();
+  // app.dock.hide();
   createTrayMenu();
   createWindow();
 });

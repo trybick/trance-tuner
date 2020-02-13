@@ -9,18 +9,26 @@
 <body>
   <h1>Tray Tuner</h1>
 
-  <!-- Default html controls -->
-  <!-- <audio src="http://us2.ah.fm/192k/;stream/1" controls>
-    Audio test
-  </audio> -->
-
   <audio id="player" src="http://us2.ah.fm/192k/;stream/1"></audio>
+
   <div>
-    <button onclick="document.getElementById('player').play()">Play</button>
-    <button onclick="document.getElementById('player').pause()">Pause</button>
+    <button onclick="togglePlay()">Toggle</button>
+
     <button onclick="document.getElementById('player').volume += 0.1">Vol +</button>
     <button onclick="document.getElementById('player').volume -= 0.1">Vol -</button>
+
   </div>
+
+  <!-- JavaScript -->
+  <script>
+    const player = document.getElementById('player');
+
+    function togglePlay() {
+      return player.paused ? player.play() : player.pause();
+    }
+
+
+  </script>
 </body>
 
 </html>
