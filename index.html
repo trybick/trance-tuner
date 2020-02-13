@@ -14,9 +14,8 @@
   <div>
     <button onclick="togglePlay()">Toggle</button>
 
-    <button onclick="increaseVolume()">Vol +</button>
-    <button onclick="decreaseVolume()">Vol -</button>
-
+    <input id="vol-slider" type="range" min="0" max="100" step="1" oninput="setVolume(this.value)"
+      onchange="setVolume(this.value)"></input>
   </div>
 
   <!-- JavaScript -->
@@ -27,14 +26,9 @@
       return player.paused ? player.play() : player.pause();
     }
 
-    function increaseVolume() {
-      return player.volume += 0.1;
+    function setVolume(val) {
+      player.volume = val / 100;
     }
-
-    function decreaseVolume() {
-      return player.volume -= 0.1;
-    }
-
 
   </script>
 </body>
