@@ -1,3 +1,4 @@
+/* Play button */
 .play {
   outline: none;
   border: 0;
@@ -17,4 +18,11 @@
 }
 .play:hover {
   border-color: transparent transparent transparent #404040;
+}
+
+/* Volume slider */
+.volume {
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
 }
