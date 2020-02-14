@@ -15,6 +15,7 @@ function createTrayMenu() {
         mainWindow.show();
       },
     },
+    { type: 'separator' },
     {
       label: 'Quit TrayTuner',
       click: async () => {
@@ -27,11 +28,10 @@ function createTrayMenu() {
   tray.setToolTip('Tray Tuner');
 
   // Ignore double click events for the tray icon
-  tray.setIgnoreDoubleClickEvents(true);
+  // tray.setIgnoreDoubleClickEvents(true);
 
-  tray.on('right-click', () => {
-    // right-click --> Open tray menu
-  });
+  // tray.on('right-click', () => {
+  // });
 
   tray.on('click', () => {
     // Toggle play
