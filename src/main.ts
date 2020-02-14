@@ -9,9 +9,14 @@ function createTrayMenu() {
   tray = new Tray(path.join(__dirname, '../icon.ico'));
 
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'radio', type: 'radio', checked: true },
     {
-      label: 'Quit',
+      label: 'Preferences',
+      click: async () => {
+        mainWindow.show();
+      },
+    },
+    {
+      label: 'Quit TrayTuner',
       click: async () => {
         app.quit();
       },
@@ -22,13 +27,10 @@ function createTrayMenu() {
   tray.setToolTip('Tray Tuner');
 
   // Ignore double click events for the tray icon
-  // tray.setIgnoreDoubleClickEvents(true);
+  tray.setIgnoreDoubleClickEvents(true);
 
   tray.on('right-click', () => {
-    // Would this line work to open the settings window?
-    mainWindow.show();
-
-    // right-click --> Open menu
+    // right-click --> Open tray menu
   });
 
   tray.on('click', () => {
