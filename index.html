@@ -14,9 +14,11 @@
   <div>
     <audio id="player" src="http://us2.ah.fm/192k/;stream/1"></audio>
 
-    <button id="play-btn" class="play" onclick="togglePlay()"></button>
+    <div class="toggle-play">
+      <button id="play-btn" class="play" onclick="togglePlay()"></button>
+    </div>
 
-    <div>
+    <div class="volume-control">
       <input class="volume" type="range" min="0" max="100" value="100" step="1" oninput="setVolume(this.value)"
         onchange="setVolume(this.value)"></input>
       <output id="output">100</output>
