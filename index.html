@@ -3,35 +3,38 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="style/index.css">
   <title>Tray Tuner</title>
 </head>
 
 <body>
   <h1>Tray Tuner</h1>
 
-  <audio id="player" src="http://us2.ah.fm/192k/;stream/1"></audio>
-
+  <!-- Audio section -->
   <div>
-    <button onclick="togglePlay()">Toggle</button>
+    <audio id="player" src="http://us2.ah.fm/192k/;stream/1"></audio>
 
-    <input type="range" min="0" max="100" step="1" oninput="setVolume(this.value)"
+    <button id="play-btn" class="play" onclick="togglePlay()"></button>
+
+    <input type="range" min="0" max="100" value="100" step="1" oninput="setVolume(this.value)"
       onchange="setVolume(this.value)"></input>
 
-    <output id="output">50</output>
+    <output id="output">100</output>
   </div>
 
   <!-- JavaScript -->
   <script>
     const player = document.getElementById('player');
     const output = document.getElementById('output');
+    const playBtn = document.getElementById('play-btn');
 
     function togglePlay() {
-      return player.paused ? player.play() : player.pause();
+      playBtn.classList.toggle("paused");
+      player.paused ? player.play() : player.pause();
     }
 
     function setVolume(val) {
       player.volume = val / 100;
-
       output.innerText = val;
     }
 
