@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, Tray } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import * as path from 'path';
 require('electron-reloader')(module);
 
@@ -33,15 +33,18 @@ function createTrayMenu() {
   // tray.on('right-click', () => {
   // });
 
-  tray.on('click', () => {
-    // Toggle play
-  });
+  // tray.on('click', () => {
+  // });
 }
 
 function createWindow() {
   mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
+    // Allow node require in html
+    webPreferences: {
+      nodeIntegration: true,
+    },
   });
 
   mainWindow.loadFile(path.join(__dirname, '../index.html'));

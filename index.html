@@ -29,22 +29,8 @@
   </div>
 
   <!-- JavaScript -->
-  <script>
-    const player = document.getElementById('player');
-    const output = document.getElementById('output');
-    const playBtn = document.getElementById('play-btn');
+  <script type="text/javascript" src="dist/index.js"></script>
 
-    function togglePlay() {
-      playBtn.classList.toggle("paused");
-      // player.paused ? player.play() : player.pause();
-    }
-
-    function setVolume(val) {
-      player.volume = val / 100;
-      output.innerText = val;
-    }
-
-  </script>
 </body>
 
 </html>
