@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
+import { app, BrowserWindow, Menu, Tray } from 'electron';
 import * as path from 'path';
 require('electron-reloader')(module);
 
@@ -27,12 +27,11 @@ function createTray() {
   tray.setIgnoreDoubleClickEvents(true);
 
   tray.on('right-click', () => {
-    console.log('right-click');
     tray.popUpContextMenu(contextMenu);
   });
 
   tray.on('click', () => {
-    console.log('click');
+    mainWindow.webContents.send('toggle-play');
   });
 }
 
@@ -40,7 +39,6 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
-    // Allow node require in html
     webPreferences: {
       nodeIntegration: true,
     },
@@ -55,7 +53,7 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  // app.dock.hide();
+  app.dock.hide();
   createTray();
   createWindow();
 });
