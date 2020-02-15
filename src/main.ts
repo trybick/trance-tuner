@@ -5,9 +5,7 @@ require('electron-reloader')(module);
 let tray: Tray | null = null;
 let mainWindow: Electron.BrowserWindow;
 
-function createTrayMenu() {
-  tray = new Tray(path.join(__dirname, '../icon.ico'));
-
+function createTray() {
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Preferences',
@@ -24,17 +22,18 @@ function createTrayMenu() {
     },
   ]);
 
-  tray.setContextMenu(contextMenu);
+  tray = new Tray(path.join(__dirname, '../icon.ico'));
   tray.setToolTip('Tray Tuner');
+  tray.setIgnoreDoubleClickEvents(true);
 
-  // Ignore double click events for the tray icon
-  // tray.setIgnoreDoubleClickEvents(true);
+  tray.on('right-click', () => {
+    console.log('right-click');
+    tray.popUpContextMenu(contextMenu);
+  });
 
-  // tray.on('right-click', () => {
-  // });
-
-  // tray.on('click', () => {
-  // });
+  tray.on('click', () => {
+    console.log('click');
+  });
 }
 
 function createWindow() {
@@ -57,6 +56,6 @@ function createWindow() {
 
 app.on('ready', () => {
   // app.dock.hide();
-  createTrayMenu();
+  createTray();
   createWindow();
 });
