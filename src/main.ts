@@ -8,7 +8,7 @@ const pauseIcon = path.join(__dirname, '../icon9.png');
 let currentTrayIcon = playIcon;
 let mainWindow: Electron.BrowserWindow;
 
-let showInDock = true;
+let hideInDock = false;
 
 function createTray() {
   const contextMenu = Menu.buildFromTemplate([
@@ -70,12 +70,13 @@ function toggleTrayIcon() {
 }
 
 function toggleDockSetting() {
-  if (showInDock === false) {
-    app.dock.show();
-    showInDock = true;
-  } else {
+  if (hideInDock === false) {
     app.dock.hide();
-    showInDock = false;
+    hideInDock = true;
+    // set a setting
+  } else {
+    app.dock.show();
+    hideInDock = false;
     mainWindow.show();
   }
 }
