@@ -10,8 +10,8 @@
 <body>
   <h1>Tray Tuner</h1>
 
-  <!-- Audio section -->
-  <div>
+  <!-- Audio Section -->
+  <div class="audio-section">
     <audio id="player" src="http://us2.ah.fm/192k/;stream/1"></audio>
 
     <div class="toggle-play">
@@ -28,23 +28,17 @@
     </div>
   </div>
 
+  <!-- Settings -->
+  <div>
+    <h4>Settings</h4>
+
+    <input id="dock-setting" type="checkbox" name="dock-enabled" onclick="toggleDockSetting()"></input>
+    <label for="dock-setting">Hide in Dock</label>
+  </div>
+
   <!-- JavaScript -->
-  <script>
-    const player = document.getElementById('player');
-    const output = document.getElementById('output');
-    const playBtn = document.getElementById('play-btn');
+  <script type="text/javascript" src="dist/renderer.js"></script>
 
-    function togglePlay() {
-      playBtn.classList.toggle("paused");
-      // player.paused ? player.play() : player.pause();
-    }
-
-    function setVolume(val) {
-      player.volume = val / 100;
-      output.innerText = val;
-    }
-
-  </script>
 </body>
 
 </html>
