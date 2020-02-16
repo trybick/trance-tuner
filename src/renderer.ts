@@ -2,6 +2,9 @@
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 
+// **
+// Audio Section
+// **
 const player = document.getElementById('player') as HTMLAudioElement;
 const output = document.getElementById('output') as HTMLOutputElement;
 const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
@@ -23,3 +26,10 @@ function setVolume(val: HTMLInputElement['value']) {
 ipc.on('toggle-play', () => {
   togglePlay();
 });
+
+// **
+// Settings
+// **
+function toggleDockSetting() {
+  ipc.send('asynchronous-message', 'toggle-dock-setting');
+}

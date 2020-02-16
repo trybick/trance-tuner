@@ -8,6 +8,8 @@ const pauseIcon = path.join(__dirname, '../icon9.png');
 let currentTrayIcon = playIcon;
 let mainWindow: Electron.BrowserWindow;
 
+let showInDock = true;
+
 function createTray() {
   const contextMenu = Menu.buildFromTemplate([
     {
@@ -67,15 +69,28 @@ function toggleTrayIcon() {
   }
 }
 
+function toggleDockSetting() {
+  if (showInDock === false) {
+    app.dock.show();
+    showInDock = true;
+  } else {
+    app.dock.hide();
+    showInDock = false;
+    mainWindow.show();
+  }
+}
+
 // Listen for toggle-icon command
 ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'toggle-icon') {
     toggleTrayIcon();
   }
+  if (arg === 'toggle-dock-setting') {
+    toggleDockSetting();
+  }
 });
 
 app.on('ready', () => {
-  app.dock.hide();
   createTray();
   createWindow();
 });

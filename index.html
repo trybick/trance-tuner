@@ -10,8 +10,8 @@
 <body>
   <h1>Tray Tuner</h1>
 
-  <!-- Audio section -->
-  <div>
+  <!-- Audio Section -->
+  <div class="audio-section">
     <audio id="player" src="http://us2.ah.fm/192k/;stream/1"></audio>
 
     <div class="toggle-play">
@@ -28,8 +28,16 @@
     </div>
   </div>
 
+  <!-- Settings -->
+  <div>
+    <h4>Settings</h4>
+
+    <input type="checkbox" name="dock-enabled" onclick="toggleDockSetting()" checked></input>
+    <label>Show app in Dock</label>
+  </div>
+
   <!-- JavaScript -->
-  <script type="text/javascript" src="dist/index.js"></script>
+  <script type="text/javascript" src="dist/renderer.js"></script>
 
 </body>
 
