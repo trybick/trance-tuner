@@ -1,13 +1,15 @@
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import * as path from 'path';
+import Store from 'electron-store';
 require('electron-reloader')(module);
 
 let tray: Tray | null = null;
+let mainWindow: Electron.BrowserWindow;
 const playIcon = path.join(__dirname, '../icon.ico');
 const pauseIcon = path.join(__dirname, '../icon9.png');
-let currentTrayIcon = playIcon;
-let mainWindow: Electron.BrowserWindow;
+const store = new Store();
 
+let currentTrayIcon = playIcon;
 let hideInDock = false;
 
 function createTray() {
@@ -73,17 +75,32 @@ function toggleDockSetting() {
   if (hideInDock === false) {
     app.dock.hide();
     hideInDock = true;
-    // set a setting
+    mainWindow.show();
+
+    store.set('setting.hideDock', true);
   } else {
     app.dock.show();
     hideInDock = false;
-    mainWindow.show();
+
+    store.set('setting.hideDock', false);
   }
 }
 
-// Listen for toggle-icon command
+function loadSettings() {
+  const shouldHideDock = store.get('setting.hideDock');
+
+  if (shouldHideDock) {
+    app.dock.hide();
+    hideInDock = true;
+    mainWindow.webContents.on('did-finish-load', () => {
+      mainWindow.webContents.send('dock-setting-enabled');
+    });
+  }
+}
+
+// Listen for commands from renderer
 ipcMain.on('asynchronous-message', (event, arg) => {
-  if (arg === 'toggle-icon') {
+  if (arg === 'toggle-play-icon') {
     toggleTrayIcon();
   }
   if (arg === 'toggle-dock-setting') {
@@ -94,4 +111,5 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 app.on('ready', () => {
   createTray();
   createWindow();
+  loadSettings();
 });

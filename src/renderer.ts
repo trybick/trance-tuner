@@ -12,9 +12,7 @@ const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
 function togglePlay() {
   playBtn.classList.toggle('paused');
   player.paused ? player.play() : player.pause();
-
-  // Send toggle-icon command
-  ipc.send('asynchronous-message', 'toggle-icon');
+  ipc.send('asynchronous-message', 'toggle-play-icon');
 }
 
 function setVolume(val: HTMLInputElement['value']) {
@@ -22,7 +20,7 @@ function setVolume(val: HTMLInputElement['value']) {
   output.innerText = val;
 }
 
-// Listen for tray clicks
+// Listen for play/pause tray clicks
 ipc.on('toggle-play', () => {
   togglePlay();
 });
@@ -30,6 +28,14 @@ ipc.on('toggle-play', () => {
 // **
 // Settings
 // **
+const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInputElement;
+
+// Called when checkbox is clicked
 function toggleDockSetting() {
   ipc.send('asynchronous-message', 'toggle-dock-setting');
 }
+
+// Triggered on startup if 'hide dock setting' is enabled
+ipc.on('dock-setting-enabled', () => {
+  dockSettingCheckbox.checked = true;
+});
