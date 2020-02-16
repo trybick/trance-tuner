@@ -1,17 +1,21 @@
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import * as path from 'path';
 import Store from 'electron-store';
-require('electron-reloader')(module);
+import electronReloader from 'electron-reloader';
+electronReloader(module);
 
-let tray: Tray | null = null;
-let mainWindow: Electron.BrowserWindow;
 const playIcon = path.join(__dirname, '../icon.ico');
 const pauseIcon = path.join(__dirname, '../icon9.png');
 const store = new Store();
 
+let tray: Tray | null = null;
+let mainWindow: Electron.BrowserWindow;
 let currentTrayIcon = playIcon;
 let hideInDock = false;
 
+// **
+// Create Tray
+// **
 function createTray() {
   const contextMenu = Menu.buildFromTemplate([
     {
@@ -33,17 +37,18 @@ function createTray() {
   tray.setToolTip('Tray Tuner');
   tray.setIgnoreDoubleClickEvents(true);
 
-  // Left-click toggles music
   tray.on('click', () => {
     mainWindow.webContents.send('toggle-play');
   });
 
-  // Right-click opens menu
   tray.on('right-click', () => {
     tray.popUpContextMenu(contextMenu);
   });
 }
 
+// **
+// Create Window
+// **
 function createWindow() {
   mainWindow = new BrowserWindow({
     height: 600,
@@ -61,7 +66,19 @@ function createWindow() {
   });
 }
 
-function toggleTrayIcon() {
+// **
+// Renderer Listener
+// **
+ipcMain.on('asynchronous-message', (event, arg) => {
+  if (arg === 'toggle-play-icon') {
+    _toggleTrayIcon();
+  }
+  if (arg === 'toggle-dock-setting') {
+    _toggleDockSetting();
+  }
+});
+
+function _toggleTrayIcon() {
   if (currentTrayIcon === playIcon) {
     tray.setImage(pauseIcon);
     currentTrayIcon = pauseIcon;
@@ -71,7 +88,7 @@ function toggleTrayIcon() {
   }
 }
 
-function toggleDockSetting() {
+function _toggleDockSetting() {
   if (hideInDock === false) {
     app.dock.hide();
     hideInDock = true;
@@ -86,6 +103,9 @@ function toggleDockSetting() {
   }
 }
 
+// **
+// Load Settings
+// **
 function loadSettings() {
   const shouldHideDock = store.get('setting.hideDock');
 
@@ -98,16 +118,9 @@ function loadSettings() {
   }
 }
 
-// Listen for commands from renderer
-ipcMain.on('asynchronous-message', (event, arg) => {
-  if (arg === 'toggle-play-icon') {
-    toggleTrayIcon();
-  }
-  if (arg === 'toggle-dock-setting') {
-    toggleDockSetting();
-  }
-});
-
+// **
+// Initiate main functions
+// **
 app.on('ready', () => {
   createTray();
   createWindow();
