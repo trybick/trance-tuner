@@ -2,12 +2,18 @@
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 
-// **
-// Audio Section
-// **
 const player = document.getElementById('player') as HTMLAudioElement;
 const output = document.getElementById('output') as HTMLOutputElement;
 const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
+const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInputElement;
+
+ipc.on('toggle-play', () => {
+  togglePlay();
+});
+
+ipc.on('dock-setting-enabled', () => {
+  dockSettingCheckbox.checked = true;
+});
 
 function togglePlay() {
   playBtn.classList.toggle('paused');
@@ -20,22 +26,6 @@ function setVolume(val: HTMLInputElement['value']) {
   output.innerText = val;
 }
 
-// Listen for play/pause tray clicks
-ipc.on('toggle-play', () => {
-  togglePlay();
-});
-
-// **
-// Settings
-// **
-const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInputElement;
-
-// Called when checkbox is clicked
 function toggleDockSetting() {
   ipc.send('asynchronous-message', 'toggle-dock-setting');
 }
-
-// Triggered on startup if 'hide dock setting' is enabled
-ipc.on('dock-setting-enabled', () => {
-  dockSettingCheckbox.checked = true;
-});
