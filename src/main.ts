@@ -5,7 +5,7 @@ require('electron-reloader')(module);
 let tray: Tray | null = null;
 const playIcon = path.join(__dirname, '../icon.ico');
 const pauseIcon = path.join(__dirname, '../icon9.png');
-const currentTrayIcon = playIcon;
+let currentTrayIcon = playIcon;
 let mainWindow: Electron.BrowserWindow;
 
 function createTray() {
@@ -29,12 +29,14 @@ function createTray() {
   tray.setToolTip('Tray Tuner');
   tray.setIgnoreDoubleClickEvents(true);
 
-  tray.on('right-click', () => {
-    tray.popUpContextMenu(contextMenu);
-  });
-
+  // Left-click toggles music
   tray.on('click', () => {
     mainWindow.webContents.send('toggle-play');
+  });
+
+  // Right-click opens menu
+  tray.on('right-click', () => {
+    tray.popUpContextMenu(contextMenu);
   });
 }
 
@@ -58,13 +60,15 @@ function createWindow() {
 function toggleTrayIcon() {
   if (currentTrayIcon === playIcon) {
     tray.setImage(pauseIcon);
+    currentTrayIcon = pauseIcon;
   } else {
-    console.log('ok');
     tray.setImage(playIcon);
+    currentTrayIcon = playIcon;
   }
 }
 
-ipcMain.on('synchronous-message', (event, arg) => {
+// Listen for toggle-icon command
+ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'toggle-icon') {
     toggleTrayIcon();
   }
