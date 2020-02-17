@@ -114,21 +114,15 @@ function _openAddAudio() {
       type: 'url',
     },
   })
-    .then((input: string) => {
-      if (input === null) {
+    .then((url: string) => {
+      if (url === null) {
         return;
       }
-
-      if (!input.startsWith('http')) {
-        input = 'http://'.concat(input);
+      if (!url.startsWith('http')) {
+        url = 'http://'.concat(url);
       }
-
-      // Save the URL to disk
-      store.set('audio.source', input);
-
-      // Update audio src attribute and span text
-      mainWindow.webContents.send('source-update', input);
-      // Load the source upon startup
+      store.set('audio.source', url);
+      mainWindow.webContents.send('source-update', url);
     })
     .catch(console.error);
 }
@@ -140,23 +134,20 @@ function loadSettings() {
   const shouldHideDock = store.get('setting.hideDock');
   const audioSource = store.get('audio.source');
 
-  if (shouldHideDock) {
-    app.dock.hide();
-    hideInDock = true;
-    mainWindow.webContents.on('did-finish-load', () => {
+  mainWindow.webContents.on('did-finish-load', () => {
+    if (shouldHideDock) {
+      app.dock.hide();
+      hideInDock = true;
       mainWindow.webContents.send('dock-setting-enabled');
-    });
-  }
-
-  if (audioSource) {
-    mainWindow.webContents.on('did-finish-load', () => {
+    }
+    if (audioSource) {
       mainWindow.webContents.send('source-update', audioSource);
-    });
-  }
+    }
+  });
 }
 
 // **
-// Initiate main functions
+// Initiate main
 // **
 app.on('ready', () => {
   createTray();
