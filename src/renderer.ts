@@ -10,6 +10,8 @@ const output = document.getElementById('output') as HTMLOutputElement;
 const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
 const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInputElement;
 const audioSourceDisplay = document.getElementById('audio-source') as HTMLSpanElement;
+const settingsContainer = document.getElementById('settings') as HTMLDivElement;
+// const openSettingsBtn = document.getElementById('toggle-settings') as HTMLButtonElement;
 
 // **
 // Listeners
@@ -47,4 +49,10 @@ function toggleDockSetting() {
 
 function openAddAudio() {
   ipc.send('asynchronous-message', 'open-add-audio');
+}
+
+function toggleSettings() {
+  window.getComputedStyle(settingsContainer).display === 'none'
+    ? (settingsContainer.style.display = 'block')
+    : (settingsContainer.style.display = 'none');
 }

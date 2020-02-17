@@ -14,6 +14,11 @@
   margin-bottom: 40px;
 }
 
+/* Settings container */
+.settings-container {
+  display: none;
+}
+
 /* Play button element*/
 .play {
   outline: none;
