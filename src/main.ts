@@ -1,7 +1,8 @@
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
-import * as path from 'path';
+import prompt from 'electron-prompt';
 import Store from 'electron-store';
 import electronReloader from 'electron-reloader';
+import * as path from 'path';
 electronReloader(module);
 
 const playIcon = path.join(__dirname, '../icon.ico');
@@ -79,6 +80,25 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 });
 
 function _toggleTrayIcon() {
+  // Temporary test location for dialog prompt
+  prompt({
+    title: 'Tray Tuner',
+    label: 'Audio URL:',
+    value: 'http://example.org',
+    inputAttrs: {
+      type: 'url',
+    },
+    resizable: true,
+  })
+    .then((res: any) => {
+      if (res === null) {
+        console.log('user cancelled');
+      } else {
+        console.log('result', res);
+      }
+    })
+    .catch(console.error);
+
   if (currentTrayIcon === playIcon) {
     tray.setImage(pauseIcon);
     currentTrayIcon = pauseIcon;
@@ -93,12 +113,10 @@ function _toggleDockSetting() {
     app.dock.hide();
     hideInDock = true;
     mainWindow.show();
-
     store.set('setting.hideDock', true);
   } else {
     app.dock.show();
     hideInDock = false;
-
     store.set('setting.hideDock', false);
   }
 }
