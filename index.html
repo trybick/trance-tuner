@@ -19,8 +19,8 @@
     </div>
 
     <div class="volume-control">
-      <input class="volume" type="range" min="0" max="100" value="100" step="1" oninput="setVolume(this.value)"
-        onchange="setVolume(this.value)"></input>
+      <input class="volume" type="range" min="0" max="100" value="100" step="1"
+        oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
     </div>
 
     <div class="vol-level">
@@ -32,8 +32,10 @@
   <div>
     <h4>Settings</h4>
 
-    <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
-    <label for="dock-setting">Hide in Dock</label>
+    <div>
+      <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
+      <label for="dock-setting">Hide in Dock</label>
+    </div>
 
   </div>
 
