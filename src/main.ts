@@ -77,28 +77,12 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'toggle-dock-setting') {
     _toggleDockSetting();
   }
+  if (arg === 'open-add-audio') {
+    _openAddAudio();
+  }
 });
 
 function _toggleTrayIcon() {
-  // Temporary test location for dialog prompt
-  prompt({
-    title: 'Tray Tuner',
-    label: 'Audio URL:',
-    value: 'http://example.org',
-    inputAttrs: {
-      type: 'url',
-    },
-    resizable: true,
-  })
-    .then((res: any) => {
-      if (res === null) {
-        console.log('user cancelled');
-      } else {
-        console.log('result', res);
-      }
-    })
-    .catch(console.error);
-
   if (currentTrayIcon === playIcon) {
     tray.setImage(pauseIcon);
     currentTrayIcon = pauseIcon;
@@ -119,6 +103,25 @@ function _toggleDockSetting() {
     hideInDock = false;
     store.set('setting.hideDock', false);
   }
+}
+
+function _openAddAudio() {
+  prompt({
+    title: 'Tray Tuner',
+    label: 'Audio stream URL:',
+    value: 'http://example.org',
+    inputAttrs: {
+      type: 'url',
+    },
+  })
+    .then((res: any) => {
+      if (res === null) {
+        return;
+      }
+
+      console.log('result', res);
+    })
+    .catch(console.error);
 }
 
 // **

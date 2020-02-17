@@ -29,3 +29,7 @@ function setVolume(val: HTMLInputElement['value']) {
 function toggleDockSetting() {
   ipc.send('asynchronous-message', 'toggle-dock-setting');
 }
+
+function openAddAudio() {
+  ipc.send('asynchronous-message', 'open-add-audio');
+}

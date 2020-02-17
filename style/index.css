@@ -9,6 +9,11 @@
   margin: 30px 0;
 }
 
+/* Dock setting container */
+.dock-setting-container {
+  margin-bottom: 40px;
+}
+
 /* Play button element*/
 .play {
   outline: none;
