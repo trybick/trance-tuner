@@ -114,12 +114,21 @@ function _openAddAudio() {
       type: 'url',
     },
   })
-    .then((res: any) => {
-      if (res === null) {
+    .then((input: string) => {
+      if (input === null) {
         return;
       }
 
-      console.log('result', res);
+      if (!input.startsWith('http')) {
+        input = 'http://'.concat(input);
+      }
+
+      // Save the URL to disk
+      store.set('audio.source', input);
+
+      // Update audio src attribute and span text
+      mainWindow.webContents.send('source-update', input);
+      // Load the source upon startup
     })
     .catch(console.error);
 }
@@ -129,12 +138,19 @@ function _openAddAudio() {
 // **
 function loadSettings() {
   const shouldHideDock = store.get('setting.hideDock');
+  const audioSource = store.get('audio.source');
 
   if (shouldHideDock) {
     app.dock.hide();
     hideInDock = true;
     mainWindow.webContents.on('did-finish-load', () => {
       mainWindow.webContents.send('dock-setting-enabled');
+    });
+  }
+
+  if (audioSource) {
+    mainWindow.webContents.on('did-finish-load', () => {
+      mainWindow.webContents.send('source-update', audioSource);
     });
   }
 }
