@@ -16,15 +16,13 @@
     <audio id="player"></audio>
 
     <div class="toggle-play">
-      <button id="play-btn" class="play" onclick="togglePlay()"></button>
+      <button id="play-btn" class="play-btn" onclick="togglePlay()"></button>
     </div>
 
     <div class="volume-control">
-      <input class="volume" type="range" min="0" max="100" value="100" step="1"
+      <input class="volume-input" type="range" min="0" max="100" value="100" step="1"
         oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
-    </div>
 
-    <div class="vol-level">
       <output id="output">100</output>
     </div>
   </div>

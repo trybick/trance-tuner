@@ -1,26 +1,27 @@
+// Audio container
 .audio-section {
   margin-bottom: 50px;
-}
 
-/* Play button container */
-.toggle-play {
-  text-align: center;
-  height: 80px;
-  margin: 30px 0;
-}
-
-/* Dock setting container */
-.dock-setting-container {
-  margin-bottom: 40px;
+  /* Play button container */
+  .toggle-play {
+    text-align: center;
+    height: 80px;
+    margin: 30px 0;
+  }
 }
 
 /* Settings container */
 .settings-container {
   display: none;
+
+  /* Dock setting container */
+  .dock-setting-container {
+    margin-bottom: 40px;
+  }
 }
 
 /* Play button element*/
-.play {
+.play-btn {
   outline: none;
   border: 0;
   background: transparent;
@@ -32,28 +33,29 @@
   cursor: pointer;
   border-style: solid;
   border-width: 37px 0 37px 60px;
-}
-.play.paused {
-  border-style: double;
-  border-width: 0px 0 0px 60px;
-}
-.play:hover {
-  border-color: transparent transparent transparent #404040;
+
+  &.paused {
+    border-style: double;
+    border-width: 0px 0 0px 60px;
+  }
+  &:hover {
+    border-color: transparent transparent transparent #404040;
+  }
 }
 
 /* Volume slider container */
 .volume-control {
   text-align: center;
-}
 
-/* Volume slider element */
-.volume {
-  width: 150px;
-  height: 30px;
-  cursor: pointer;
-}
+  /* Volume slider element */
+  .volume-input {
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+  }
 
-/* Volume level indicator */
-.vol-level {
-  text-align: center;
+  /* Volume level indicator */
+  .vol-level {
+    text-align: center;
+  }
 }
