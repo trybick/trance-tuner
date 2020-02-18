@@ -10,7 +10,7 @@
 <body>
   <div class="app-container">
 
-    <!-- Audio Section -->
+    <!-- Audio Container -->
     <div class="audio-section">
       <audio id="player"></audio>
       <div class="toggle-play">
@@ -24,25 +24,32 @@
       </div>
     </div>
 
-    <!-- Settings -->
+    <!-- Settings Toggle Button-->
     <div class="settings-btn-container">
       <button onclick="toggleOpenSettings()">
         <img id="chevron-settings" src="images/chevron-down.png" />
       </button>
     </div>
 
+    <!-- Settings Container -->
     <div id="settings" class="settings-container">
+
+      <!-- Audio Source -->
       <div class="audio-source-container">
         <p class="source-display" id="audio-source">example.org</p>
-        <button onclick="openAddAudio()">Edit</button>
-        <button onclick="chooseForMe()">Choose for me</button>
+        <button class="choose-for-me-btn" onclick="chooseForMe()">Random</button>
+        <button class="edit-source-btn" onclick="openAddAudio()">Edit</button>
       </div>
 
-      <h4>Settings</h4>
-      <div class="dock-setting-container">
-        <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
-        <label for="dock-setting">Hide in Dock</label>
+      <!-- Proper Settings -->
+      <div class="proper-settings-container">
+        <h4 class="settings-title">Settings</h4>
+        <div class="dock-setting-container">
+          <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
+          <label for="dock-setting">Hide in Dock</label>
+        </div>
       </div>
+
     </div>
 
   </div>

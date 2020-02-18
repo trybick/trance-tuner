@@ -64,6 +64,9 @@ function toggleDockSetting() {
 }
 
 function openAddAudio() {
+  // Bug with wrong toggle icon
+  !player.paused && togglePlay();
+  player.pause();
   ipc.send('asynchronous-message', 'open-add-audio');
 }
 
@@ -78,6 +81,9 @@ function toggleOpenSettings() {
 }
 
 function chooseForMe() {
+  // Bug with wrong toggle icon
+  !player.paused && togglePlay();
+  player.pause();
   player.src = ahFmSource;
   audioSourceDisplay.textContent = ahFmSource;
   ipc.send('asynchronous-message', 'save-default-source');

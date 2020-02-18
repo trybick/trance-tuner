@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cantarell:400i|Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cantarell:400i|Work+Sans:400,600&display=swap');
 
 .app-container {
   padding: 20px 40px;
@@ -59,19 +59,33 @@
 
 .settings-container {
   display: none;
+  font-family: 'Work Sans', sans-serif;
 
   .audio-source-container {
     text-align: center;
     margin-bottom: 25px;
 
+    .edit-source-btn, .choose-for-me-btn {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 15px;
+      height: 30px;
+      border: 0;
+      cursor: pointer;
+    }
+
     .source-display {
-      font-family: 'Cantarell', sans-serif;
       font-size: 18px;
       text-decoration: underline;
     }
   }
 
-  .dock-setting-container {
-    margin-bottom: 40px;
+  .proper-settings-container {
+    .settings-title {
+      font-size: 16px;
+    }
+
+    .dock-setting-container {
+      margin-bottom: 40px;
+    }
   }
 }
