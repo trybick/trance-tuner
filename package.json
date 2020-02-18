@@ -5,28 +5,27 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "concur": "concurrently \"npm run watch\" \"electron ./dist/main.js\"",
-    "start": "npm run build && electron ./dist/main.js"
+    "sass": "sass ./style/index.scss ./dist/index.css",
+    "start": "npm run sass && npm run build && electron ./dist/main.js"
   },
   "repository": "",
   "keywords": [],
   "author": "Tim Rybicki",
   "license": "MIT",
+  "dependencies": {
+    "electron": "^8.0.0",
+    "electron-prompt": "^1.5.1",
+    "electron-store": "^5.1.0"
+  },
   "devDependencies": {
+    "@types/electron-prompt": "^1.3.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
-    "concurrently": "^5.1.0",
-    "electron": "^8.0.0",
     "electron-reloader": "^1.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^1.19.1",
     "typescript": "^3.7.0"
-  },
-  "dependencies": {
-    "@types/electron-prompt": "^1.3.0",
-    "electron-prompt": "^1.5.1",
-    "electron-store": "^5.1.0"
   }
 }
