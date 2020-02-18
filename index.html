@@ -32,15 +32,15 @@
     </div>
 
     <div id="settings" class="settings-container">
+      <div class="audio-source-container">
+        <p>Audio source: <span id="audio-source">example.org</span></p>
+        <button onclick="openAddAudio()">Add source</button>
+      </div>
+
       <h4>Settings</h4>
       <div class="dock-setting-container">
         <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
         <label for="dock-setting">Hide in Dock</label>
-      </div>
-
-      <div>
-        <p>Audio source: <span id="audio-source">example.org</span></p>
-        <button onclick="openAddAudio()">Add source</button>
       </div>
     </div>
 
