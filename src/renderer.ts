@@ -3,7 +3,7 @@ const electron = require('electron');
 const ipc = electron.ipcRenderer;
 
 // **
-// Elements
+// Constants
 // **
 const player = document.getElementById('player') as HTMLAudioElement;
 const output = document.getElementById('output') as HTMLOutputElement;
@@ -11,7 +11,12 @@ const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
 const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInputElement;
 const audioSourceDisplay = document.getElementById('audio-source') as HTMLSpanElement;
 const settingsContainer = document.getElementById('settings') as HTMLDivElement;
-// const openSettingsBtn = document.getElementById('toggle-settings') as HTMLButtonElement;
+const settingsChevron = document.getElementById('chevron-settings') as HTMLImageElement;
+
+const images = {
+  chevronUp: 'images/chevron-up.png',
+  chevronDown: 'images/chevron-down.png',
+};
 
 // **
 // Listeners
@@ -52,7 +57,11 @@ function openAddAudio() {
 }
 
 function toggleSettings() {
-  window.getComputedStyle(settingsContainer).display === 'none'
-    ? (settingsContainer.style.display = 'block')
-    : (settingsContainer.style.display = 'none');
+  if (window.getComputedStyle(settingsContainer).display === 'none') {
+    settingsContainer.style.display = 'block';
+    settingsChevron.src = images.chevronUp;
+  } else {
+    settingsContainer.style.display = 'none';
+    settingsChevron.src = images.chevronDown;
+  }
 }

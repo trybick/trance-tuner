@@ -5,8 +5,8 @@ import electronReloader from 'electron-reloader';
 import * as path from 'path';
 electronReloader(module);
 
-const playIcon = path.join(__dirname, '../icon.ico');
-const pauseIcon = path.join(__dirname, '../icon9.png');
+const playIcon = path.join(__dirname, '../images/icon.ico');
+const pauseIcon = path.join(__dirname, '../images/icon9.png');
 const store = new Store();
 
 let tray: Tray | null = null;
@@ -82,6 +82,9 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   }
 });
 
+// **
+// Listener Helpers
+// **
 function _toggleTrayIcon() {
   if (currentTrayIcon === playIcon) {
     tray.setImage(pauseIcon);
