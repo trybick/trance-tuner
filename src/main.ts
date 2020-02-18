@@ -52,8 +52,8 @@ function createTray() {
 // **
 function createWindow() {
   mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
+    height: 580,
+    width: 580,
     webPreferences: {
       nodeIntegration: true,
     },
