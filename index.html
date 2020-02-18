@@ -8,43 +8,40 @@
 </head>
 
 <body>
-  <h1>Tray Tuner</h1>
+  <div class="app-container">
 
-  <!-- Audio Section -->
-  <div class="audio-section">
-    <audio id="player"></audio>
+    <!-- Audio Section -->
+    <div class="audio-section">
+      <audio id="player"></audio>
+      <div class="toggle-play">
+        <button id="play-btn" class="play-btn" onclick="togglePlay()"></button>
+      </div>
 
-    <div class="toggle-play">
-      <button id="play-btn" class="play-btn" onclick="togglePlay()"></button>
+      <div class="volume-control">
+        <input class="volume-input" type="range" min="0" max="100" value="100" step="1"
+          oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
+        <output id="output">100</output>
+      </div>
     </div>
 
-    <div class="volume-control">
-      <input class="volume-input" type="range" min="0" max="100" value="100" step="1"
-        oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
-
-      <output id="output">100</output>
-    </div>
-  </div>
-
-  <!-- Settings -->
-  <div class="settings-btn-container">
-    <button onclick="toggleOpenSettings()">
-      <img id="chevron-settings" src="images/chevron-down.png" />
-    </button>
-  </div>
-
-  <div id="settings" class="settings-container">
-    <h4>Settings</h4>
-
-    <div class="dock-setting-container">
-      <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
-      <label for="dock-setting">Hide in Dock</label>
+    <!-- Settings -->
+    <div class="settings-btn-container">
+      <button onclick="toggleOpenSettings()">
+        <img id="chevron-settings" src="images/chevron-down.png" />
+      </button>
     </div>
 
-    <div>
-      <p>Audio source: <span id="audio-source">example.org</span></p>
+    <div id="settings" class="settings-container">
+      <h4>Settings</h4>
+      <div class="dock-setting-container">
+        <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
+        <label for="dock-setting">Hide in Dock</label>
+      </div>
 
-      <button onclick="openAddAudio()">Add source</button>
+      <div>
+        <p>Audio source: <span id="audio-source">example.org</span></p>
+        <button onclick="openAddAudio()">Add source</button>
+      </div>
     </div>
 
   </div>
