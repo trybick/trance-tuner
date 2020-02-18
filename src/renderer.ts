@@ -19,7 +19,7 @@ const images = {
 };
 
 // **
-// Listeners
+// Main Listeners
 // **
 ipc.on('toggle-play', () => {
   togglePlay();
@@ -33,6 +33,15 @@ ipc.on('source-update', (event, arg) => {
   player.src = arg;
   audioSourceDisplay.textContent = arg;
 });
+
+// **
+// Document Listeners
+// **
+document.body.onkeydown = e => {
+  if (e.code === 'Space' || e.code === 'Enter') {
+    togglePlay();
+  }
+};
 
 // **
 // Functions
@@ -56,7 +65,7 @@ function openAddAudio() {
   ipc.send('asynchronous-message', 'open-add-audio');
 }
 
-function toggleSettings() {
+function toggleOpenSettings() {
   if (window.getComputedStyle(settingsContainer).display === 'none') {
     settingsContainer.style.display = 'block';
     settingsChevron.src = images.chevronUp;
