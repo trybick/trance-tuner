@@ -8,6 +8,7 @@ electronReloader(module);
 const playIcon = path.join(__dirname, '../images/play.png');
 const pauseIcon = path.join(__dirname, '../images/pause.png');
 const store = new Store();
+const ahFmSource = 'http://us2.ah.fm/192k/;stream/1';
 
 let tray: Tray | null = null;
 let mainWindow: Electron.BrowserWindow;
@@ -79,6 +80,9 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   }
   if (arg === 'open-add-audio') {
     _openAddAudio();
+  }
+  if (arg === 'save-default-source') {
+    store.set('audio.source', ahFmSource);
   }
 });
 

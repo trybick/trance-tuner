@@ -18,6 +18,8 @@ const images = {
   chevronDown: 'images/chevron-down.png',
 };
 
+const ahFmSource = 'http://us2.ah.fm/192k/;stream/1';
+
 // **
 // Main Listeners
 // **
@@ -73,4 +75,10 @@ function toggleOpenSettings() {
     settingsContainer.style.display = 'none';
     settingsChevron.src = images.chevronDown;
   }
+}
+
+function chooseForMe() {
+  player.src = ahFmSource;
+  audioSourceDisplay.textContent = ahFmSource;
+  ipc.send('asynchronous-message', 'save-default-source');
 }
