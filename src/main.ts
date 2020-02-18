@@ -5,8 +5,8 @@ import electronReloader from 'electron-reloader';
 import * as path from 'path';
 electronReloader(module);
 
-const playIcon = path.join(__dirname, '../images/icon.ico');
-const pauseIcon = path.join(__dirname, '../images/icon9.png');
+const playIcon = path.join(__dirname, '../images/play.png');
+const pauseIcon = path.join(__dirname, '../images/pause.png');
 const store = new Store();
 
 let tray: Tray | null = null;
