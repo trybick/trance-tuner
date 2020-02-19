@@ -11,6 +11,9 @@
     text-align: center;
     height: 80px;
     margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .play-btn {
       outline: none;
@@ -32,6 +35,10 @@
       &:hover {
         border-color: transparent transparent transparent #404040;
       }
+    }
+
+    .audio-error-icon {
+      display: none;
     }
   }
 

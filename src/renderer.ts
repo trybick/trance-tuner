@@ -12,6 +12,7 @@ const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInput
 const audioSourceDisplay = document.getElementById('audio-source') as HTMLSpanElement;
 const settingsContainer = document.getElementById('settings') as HTMLDivElement;
 const settingsChevron = document.getElementById('chevron-settings') as HTMLImageElement;
+const audioErrorIcon = document.getElementById('audio-error-icon') as HTMLImageElement;
 
 const images = {
   chevronUp: 'images/chevron-up.png',
@@ -55,16 +56,15 @@ function togglePlay() {
   if (player.error) {
     playBtn.classList.remove('paused');
     ipc.send('asynchronous-message', 'set-tray-play');
-
-    // Display an error
     audioSourceDisplay.classList.add('audio-error');
+    audioErrorIcon.style.display = 'block';
   } else if (player.paused) {
-    audioSourceDisplay.classList.remove('audio-error');
+    _clearAudioError();
     player.play();
     playBtn.classList.add('paused');
     ipc.send('asynchronous-message', 'set-tray-pause');
   } else {
-    audioSourceDisplay.classList.remove('audio-error');
+    _clearAudioError();
     player.pause();
     playBtn.classList.remove('paused');
     ipc.send('asynchronous-message', 'set-tray-play');
@@ -116,7 +116,12 @@ function _resetAudioState() {
     player.pause();
     playBtn.classList.add('paused');
   }
-  audioSourceDisplay.classList.remove('audio-error');
+  _clearAudioError();
   playBtn.classList.remove('paused');
   ipc.send('asynchronous-message', 'set-tray-play');
+}
+
+function _clearAudioError() {
+  audioSourceDisplay.classList.remove('audio-error');
+  audioErrorIcon.style.display = 'none';
 }
