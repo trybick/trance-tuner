@@ -18,7 +18,10 @@ const images = {
   chevronDown: 'images/chevron-down.png',
 };
 
-const ahFmSource = 'http://us2.ah.fm/192k/;stream/1';
+const randomSources = {
+  ahFm: 'http://us2.ah.fm/192k/;stream/1',
+  revolutionRadio: 'https://revolutionradio.ru:8443/live.mp3',
+};
 
 // **
 // Main Listeners
@@ -90,9 +93,18 @@ function openAddAudio() {
 
 function setRandomSource() {
   _resetAudioState();
-  player.src = ahFmSource;
-  audioSourceDisplay.textContent = ahFmSource;
-  ipc.send('asynchronous-message', 'save-default-source');
+
+  const { ahFm, revolutionRadio } = randomSources;
+  const randomSource = player.src === ahFm ? revolutionRadio : ahFm;
+  player.src = randomSource;
+  audioSourceDisplay.textContent = randomSource;
+
+  // I don't love this
+  if (randomSource.includes('revolution')) {
+    ipc.send('asynchronous-message', 'save-default-revolution');
+  } else {
+    ipc.send('asynchronous-message', 'save-default-ahFm');
+  }
 }
 
 function _resetAudioState() {
