@@ -39,7 +39,7 @@ function createTray() {
   tray.setIgnoreDoubleClickEvents(true);
 
   tray.on('click', () => {
-    mainWindow.webContents.send('toggle-play');
+    mainWindow.webContents.send('tray-clicked');
   });
 
   tray.on('right-click', () => {

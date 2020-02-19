@@ -23,7 +23,7 @@ const ahFmSource = 'http://us2.ah.fm/192k/;stream/1';
 // **
 // Main Listeners
 // **
-ipc.on('toggle-play', () => {
+ipc.on('tray-clicked', () => {
   togglePlay();
 });
 
@@ -73,11 +73,6 @@ function toggleDockSetting() {
   ipc.send('asynchronous-message', 'toggle-dock-setting');
 }
 
-function openAddAudio() {
-  _resetAudioState();
-  ipc.send('asynchronous-message', 'open-add-audio');
-}
-
 function toggleOpenSettings() {
   if (window.getComputedStyle(settingsContainer).display === 'none') {
     settingsContainer.style.display = 'block';
@@ -88,7 +83,12 @@ function toggleOpenSettings() {
   }
 }
 
-function chooseForMe() {
+function openAddAudio() {
+  _resetAudioState();
+  ipc.send('asynchronous-message', 'open-add-audio');
+}
+
+function setRandomSource() {
   _resetAudioState();
   player.src = ahFmSource;
   audioSourceDisplay.textContent = ahFmSource;
