@@ -73,11 +73,6 @@ function toggleDockSetting() {
   ipc.send('asynchronous-message', 'toggle-dock-setting');
 }
 
-function openAddAudio() {
-  _resetAudioState();
-  ipc.send('asynchronous-message', 'open-add-audio');
-}
-
 function toggleOpenSettings() {
   if (window.getComputedStyle(settingsContainer).display === 'none') {
     settingsContainer.style.display = 'block';
@@ -86,6 +81,11 @@ function toggleOpenSettings() {
     settingsContainer.style.display = 'none';
     settingsChevron.src = images.chevronDown;
   }
+}
+
+function openAddAudio() {
+  _resetAudioState();
+  ipc.send('asynchronous-message', 'open-add-audio');
 }
 
 function setRandomSource() {
