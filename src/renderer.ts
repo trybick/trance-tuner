@@ -49,9 +49,19 @@ document.body.onkeydown = e => {
 // Functions
 // **
 function togglePlay() {
-  playBtn.classList.toggle('paused');
-  player.paused ? player.play() : player.pause();
-  ipc.send('asynchronous-message', 'toggle-play-icon');
+  if (player.error) {
+    playBtn.classList.remove('paused');
+    ipc.send('asynchronous-message', 'set-tray-play');
+    // Display an error
+  } else if (player.paused) {
+    player.play();
+    playBtn.classList.add('paused');
+    ipc.send('asynchronous-message', 'set-tray-pause');
+  } else {
+    player.pause();
+    playBtn.classList.remove('paused');
+    ipc.send('asynchronous-message', 'set-tray-play');
+  }
 }
 
 function setVolume(val: HTMLInputElement['value']) {
@@ -64,9 +74,7 @@ function toggleDockSetting() {
 }
 
 function openAddAudio() {
-  // Bug with wrong toggle icon
-  !player.paused && togglePlay();
-  player.pause();
+  _resetAudioState();
   ipc.send('asynchronous-message', 'open-add-audio');
 }
 
@@ -81,10 +89,17 @@ function toggleOpenSettings() {
 }
 
 function chooseForMe() {
-  // Bug with wrong toggle icon
-  !player.paused && togglePlay();
-  player.pause();
+  _resetAudioState();
   player.src = ahFmSource;
   audioSourceDisplay.textContent = ahFmSource;
   ipc.send('asynchronous-message', 'save-default-source');
+}
+
+function _resetAudioState() {
+  if (!player.paused) {
+    player.pause();
+    playBtn.classList.add('paused');
+  }
+  playBtn.classList.remove('paused');
+  ipc.send('asynchronous-message', 'set-tray-play');
 }

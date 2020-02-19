@@ -12,7 +12,6 @@ const ahFmSource = 'http://us2.ah.fm/192k/;stream/1';
 
 let tray: Tray | null = null;
 let mainWindow: Electron.BrowserWindow;
-let currentTrayIcon = playIcon;
 let hideInDock = false;
 
 // **
@@ -35,7 +34,7 @@ function createTray() {
     },
   ]);
 
-  tray = new Tray(currentTrayIcon);
+  tray = new Tray(playIcon);
   tray.setToolTip('Tray Tuner');
   tray.setIgnoreDoubleClickEvents(true);
 
@@ -72,8 +71,11 @@ function createWindow() {
 // Renderer Listener
 // **
 ipcMain.on('asynchronous-message', (event, arg) => {
-  if (arg === 'toggle-play-icon') {
-    _toggleTrayIcon();
+  if (arg === 'set-tray-play') {
+    tray.setImage(playIcon);
+  }
+  if (arg === 'set-tray-pause') {
+    tray.setImage(pauseIcon);
   }
   if (arg === 'toggle-dock-setting') {
     _toggleDockSetting();
@@ -89,16 +91,6 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 // **
 // Listener Helpers
 // **
-function _toggleTrayIcon() {
-  if (currentTrayIcon === playIcon) {
-    tray.setImage(pauseIcon);
-    currentTrayIcon = pauseIcon;
-  } else {
-    tray.setImage(playIcon);
-    currentTrayIcon = playIcon;
-  }
-}
-
 function _toggleDockSetting() {
   if (hideInDock === false) {
     app.dock.hide();
