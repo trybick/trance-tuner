@@ -23,7 +23,7 @@ const ahFmSource = 'http://us2.ah.fm/192k/;stream/1';
 // **
 // Main Listeners
 // **
-ipc.on('toggle-play', () => {
+ipc.on('tray-clicked', () => {
   togglePlay();
 });
 
@@ -88,7 +88,7 @@ function toggleOpenSettings() {
   }
 }
 
-function chooseForMe() {
+function setRandomSource() {
   _resetAudioState();
   player.src = ahFmSource;
   audioSourceDisplay.textContent = ahFmSource;
