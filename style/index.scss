@@ -65,7 +65,8 @@
     text-align: center;
     margin-bottom: 25px;
 
-    .edit-source-btn, .random-source-btn {
+    .edit-source-btn,
+    .random-source-btn {
       font-family: 'Work Sans', sans-serif;
       font-size: 15px;
       height: 30px;
@@ -77,6 +78,10 @@
     .source-display {
       font-size: 18px;
       text-decoration: underline;
+
+      &.audio-error {
+        color: red;
+      }
     }
   }
 

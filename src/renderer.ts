@@ -55,12 +55,16 @@ function togglePlay() {
   if (player.error) {
     playBtn.classList.remove('paused');
     ipc.send('asynchronous-message', 'set-tray-play');
+
     // Display an error
+    audioSourceDisplay.classList.add('audio-error');
   } else if (player.paused) {
+    audioSourceDisplay.classList.remove('audio-error');
     player.play();
     playBtn.classList.add('paused');
     ipc.send('asynchronous-message', 'set-tray-pause');
   } else {
+    audioSourceDisplay.classList.remove('audio-error');
     player.pause();
     playBtn.classList.remove('paused');
     ipc.send('asynchronous-message', 'set-tray-play');
@@ -112,6 +116,7 @@ function _resetAudioState() {
     player.pause();
     playBtn.classList.add('paused');
   }
+  audioSourceDisplay.classList.remove('audio-error');
   playBtn.classList.remove('paused');
   ipc.send('asynchronous-message', 'set-tray-play');
 }
