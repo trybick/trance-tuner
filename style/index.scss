@@ -86,6 +86,10 @@
     .source-display {
       font-size: 18px;
       text-decoration: underline;
+      max-width: 300px;
+      overflow: hidden;
+      margin: 0 auto;
+      white-space: nowrap;
     }
   }
 
