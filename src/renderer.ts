@@ -56,7 +56,6 @@ function togglePlay() {
   if (player.error) {
     playBtn.classList.remove('paused');
     ipc.send('asynchronous-message', 'set-tray-play');
-    audioSourceDisplay.classList.add('audio-error');
     audioErrorIcon.style.display = 'block';
   } else if (player.paused) {
     _clearAudioError();
@@ -122,6 +121,5 @@ function _resetAudioState() {
 }
 
 function _clearAudioError() {
-  audioSourceDisplay.classList.remove('audio-error');
   audioErrorIcon.style.display = 'none';
 }
