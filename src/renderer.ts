@@ -6,7 +6,6 @@ const ipc = electron.ipcRenderer;
 // Constants
 // **
 const player = document.getElementById('player') as HTMLAudioElement;
-const output = document.getElementById('output') as HTMLOutputElement;
 const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
 const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInputElement;
 const audioSourceDisplay = document.getElementById('audio-source') as HTMLSpanElement;
@@ -25,6 +24,15 @@ const randomSources = {
 };
 
 // **
+// Document Listeners
+// **
+document.body.onkeydown = e => {
+  if (e.code === 'Space' || e.code === 'Enter') {
+    togglePlay();
+  }
+};
+
+// **
 // Main Listeners
 // **
 ipc.on('tray-clicked', () => {
@@ -39,15 +47,6 @@ ipc.on('source-update', (event, arg) => {
   player.src = arg;
   audioSourceDisplay.textContent = arg;
 });
-
-// **
-// Document Listeners
-// **
-document.body.onkeydown = e => {
-  if (e.code === 'Space' || e.code === 'Enter') {
-    togglePlay();
-  }
-};
 
 // **
 // Functions
@@ -72,7 +71,6 @@ function togglePlay() {
 
 function setVolume(val: HTMLInputElement['value']) {
   player.volume = +val / 100;
-  output.innerText = val;
 }
 
 function toggleDockSetting() {

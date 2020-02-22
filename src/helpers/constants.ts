@@ -13,7 +13,10 @@ export const randomSources = {
 export const aboutWindowTemplate = {
   icon_path: aboutIcon,
   package_json_dir: path.join(__dirname, '../../'),
-  win_options: { title: 'Tray Tuner - About' },
+  win_options: {
+    title: 'Tray Tuner - About',
+    resizable: false,
+  },
   product_name: 'Tray Tuner',
   description: 'Description',
   bug_report_url: 'https://github.com/trybick/tray-tuner/issues',
