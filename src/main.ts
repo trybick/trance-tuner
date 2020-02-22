@@ -16,6 +16,7 @@ const randomSources = {
 let tray: Tray | null = null;
 let mainWindow: Electron.BrowserWindow;
 let hideInDock = false;
+let shouldQuit = false;
 
 // **
 // Create Tray
@@ -65,8 +66,8 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, '../index.html'));
 
   mainWindow.on('close', (e: Event) => {
-    e.preventDefault();
     mainWindow.hide();
+    !shouldQuit && e.preventDefault();
   });
 }
 
@@ -160,11 +161,10 @@ app.on('ready', () => {
   loadSettings();
 });
 
-app.on('window-all-closed', (e: Event) => {
-  e.preventDefault();
-  mainWindow.hide();
-});
-
 app.on('activate', () => {
   mainWindow.show();
+});
+
+app.on('before-quit', function() {
+  shouldQuit = true;
 });
