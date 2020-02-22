@@ -1,17 +1,29 @@
 {
-  "name": "menubar-tuner",
-  "version": "0.0.5",
-  "description": "",
+  "name": "tray-tuner",
+  "version": "0.0.8",
+  "description": "Control radio streams from system tray",
+  "author": "Tim Rybicki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trybick/tray-tuner/issues"
+  },
+  "homepage": "https://github.com/trybick/tray-tuner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trybick/tray-tuner"
+  },
+  "keywords": [
+    "electron",
+    "tray",
+    "radio",
+    "music"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "sass": "sass ./style/index.scss ./dist/index.css",
     "start": "npm run sass && npm run build && electron ./dist/main.js"
   },
-  "repository": "",
-  "keywords": [],
-  "author": "Tim Rybicki",
-  "license": "MIT",
   "dependencies": {
     "about-window": "^1.13.2",
     "electron": "^8.0.0",
@@ -27,6 +39,6 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^1.19.1",
-    "typescript": "^3.7.0"
+    "typescript": "^3.8.2"
   }
 }
