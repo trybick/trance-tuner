@@ -159,3 +159,6 @@ app.on('ready', () => {
   createWindow();
   loadSettings();
 });
+
+// Keep app running after window closed
+app.on('window-all-closed', (e: Event) => e.preventDefault());
