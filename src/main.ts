@@ -63,10 +63,10 @@ function createWindow() {
   });
 
   mainWindow.loadFile(path.join(__dirname, '../index.html'));
-  // mainWindow.webContents.openDevTools();
 
-  mainWindow.on('closed', () => {
-    mainWindow = null;
+  mainWindow.on('close', (e: Event) => {
+    e.preventDefault();
+    mainWindow.hide();
   });
 }
 
@@ -152,7 +152,7 @@ function loadSettings() {
 }
 
 // **
-// Initiate main
+// Main App
 // **
 app.on('ready', () => {
   createTray();
@@ -160,5 +160,11 @@ app.on('ready', () => {
   loadSettings();
 });
 
-// Keep app running after window closed
-app.on('window-all-closed', (e: Event) => e.preventDefault());
+app.on('window-all-closed', (e: Event) => {
+  e.preventDefault();
+  mainWindow.hide();
+});
+
+app.on('activate', () => {
+  mainWindow.show();
+});
