@@ -1,9 +1,15 @@
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import prompt from 'electron-prompt';
 import Store from 'electron-store';
+import openAboutWindow from 'about-window';
 import electronReloader from 'electron-reloader';
 import * as path from 'path';
 electronReloader(module);
+
+let tray: Tray | null = null;
+let mainWindow: Electron.BrowserWindow;
+let hideInDock = false;
+let shouldQuit = false;
 
 const playIcon = path.join(__dirname, '../images/play.png');
 const pauseIcon = path.join(__dirname, '../images/pause.png');
@@ -13,16 +19,26 @@ const randomSources = {
   revolutionRadio: 'https://revolutionradio.ru:8443/live.mp3',
 };
 
-let tray: Tray | null = null;
-let mainWindow: Electron.BrowserWindow;
-let hideInDock = false;
-let shouldQuit = false;
-
 // **
 // Create Tray
 // **
 function createTray() {
   const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'About',
+      click: () =>
+        openAboutWindow({
+          icon_path: playIcon,
+          product_name: 'Tray Tuner',
+          package_json_dir: path.join(__dirname, '../'),
+          bug_report_url: 'https://github.com/trybick/tray-tuner/issues',
+          bug_link_text: 'Feedback',
+          copyright: 'Copyright (c) 2020 Tim Rybicki',
+          homepage: 'https://github.com/trybick/tray-tuner',
+          description: 'Description',
+          license: 'USC',
+        }),
+    },
     {
       label: 'Preferences',
       click: async () => {

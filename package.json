@@ -13,6 +13,7 @@
   "author": "Tim Rybicki",
   "license": "MIT",
   "dependencies": {
+    "about-window": "^1.13.2",
     "electron": "^8.0.0",
     "electron-prompt": "^1.5.1",
     "electron-store": "^5.1.0"
