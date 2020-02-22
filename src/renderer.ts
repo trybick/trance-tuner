@@ -24,7 +24,7 @@ const randomSources = {
 };
 
 // **
-// Document Listeners
+// Listeners
 // **
 document.body.onkeydown = e => {
   if (e.code === 'Space' || e.code === 'Enter') {
@@ -32,9 +32,6 @@ document.body.onkeydown = e => {
   }
 };
 
-// **
-// Main Listeners
-// **
 ipc.on('tray-clicked', () => {
   togglePlay();
 });

@@ -1,10 +1,4 @@
-import {
-  aboutWindowTemplate,
-  playIcon,
-  pauseIcon,
-  store,
-  randomSources,
-} from './helpers/constants';
+import { aboutWindowTemplate, mainImages, store, randomSources } from './helpers/constants';
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import prompt from 'electron-prompt';
 import openAboutWindow from 'about-window';
@@ -41,7 +35,7 @@ function createTray() {
     },
   ]);
 
-  tray = new Tray(playIcon);
+  tray = new Tray(mainImages.playIcon);
   tray.setToolTip('Tray Tuner');
   tray.setIgnoreDoubleClickEvents(true);
 
@@ -79,10 +73,10 @@ function createWindow() {
 // **
 ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'set-tray-play') {
-    tray.setImage(playIcon);
+    tray.setImage(mainImages.playIcon);
   }
   if (arg === 'set-tray-pause') {
-    tray.setImage(pauseIcon);
+    tray.setImage(mainImages.pauseIcon);
   }
   if (arg === 'toggle-dock-setting') {
     _toggleDockSetting();
