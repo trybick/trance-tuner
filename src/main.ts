@@ -1,24 +1,21 @@
+import {
+  aboutWindowTemplate,
+  playIcon,
+  pauseIcon,
+  store,
+  randomSources,
+} from './helpers/constants';
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import prompt from 'electron-prompt';
-import Store from 'electron-store';
 import openAboutWindow from 'about-window';
-import electronReloader from 'electron-reloader';
 import * as path from 'path';
+import electronReloader from 'electron-reloader';
 electronReloader(module);
 
 let tray: Tray | null = null;
 let mainWindow: Electron.BrowserWindow;
 let hideInDock = false;
 let shouldQuit = false;
-
-const playIcon = path.join(__dirname, '../images/play.png');
-const pauseIcon = path.join(__dirname, '../images/pause.png');
-const aboutIcon = path.join(__dirname, '../images/about-icon.png');
-const store = new Store();
-const randomSources = {
-  ahFm: 'http://us2.ah.fm/192k/;stream/1',
-  revolutionRadio: 'https://revolutionradio.ru:8443/live.mp3',
-};
 
 // **
 // Create Tray
@@ -27,22 +24,10 @@ function createTray() {
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'About',
-      click: () =>
-        openAboutWindow({
-          icon_path: aboutIcon,
-          package_json_dir: path.join(__dirname, '../'),
-          win_options: { title: 'Tray Tuner - About' },
-          product_name: 'Tray Tuner',
-          description: 'Description',
-          bug_report_url: 'https://github.com/trybick/tray-tuner/issues',
-          bug_link_text: 'Feedback',
-          copyright: 'Copyright (c) 2020 Tim Rybicki',
-          homepage: 'https://github.com/trybick/tray-tuner',
-          license: 'MIT',
-        }),
+      click: () => openAboutWindow(aboutWindowTemplate),
     },
     {
-      label: 'Open Player',
+      label: 'Show Player',
       click: async () => {
         mainWindow.show();
       },
