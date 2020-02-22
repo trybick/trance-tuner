@@ -13,6 +13,7 @@ let shouldQuit = false;
 
 const playIcon = path.join(__dirname, '../images/play.png');
 const pauseIcon = path.join(__dirname, '../images/pause.png');
+const aboutIcon = path.join(__dirname, '../images/about-icon.png');
 const store = new Store();
 const randomSources = {
   ahFm: 'http://us2.ah.fm/192k/;stream/1',
@@ -28,19 +29,20 @@ function createTray() {
       label: 'About',
       click: () =>
         openAboutWindow({
-          icon_path: playIcon,
-          product_name: 'Tray Tuner',
+          icon_path: aboutIcon,
           package_json_dir: path.join(__dirname, '../'),
+          win_options: { title: 'Tray Tuner - About' },
+          product_name: 'Tray Tuner',
+          description: 'Description',
           bug_report_url: 'https://github.com/trybick/tray-tuner/issues',
           bug_link_text: 'Feedback',
           copyright: 'Copyright (c) 2020 Tim Rybicki',
           homepage: 'https://github.com/trybick/tray-tuner',
-          description: 'Description',
-          license: 'USC',
+          license: 'MIT',
         }),
     },
     {
-      label: 'Preferences',
+      label: 'Open Player',
       click: async () => {
         mainWindow.show();
       },
