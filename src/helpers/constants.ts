@@ -14,7 +14,16 @@ export const mainImages = {
   aboutIcon: path.join(__dirname, '../../images/about-icon.png'),
 };
 
-export const aboutWindowTemplate = {
+export const audioSourceDialog = {
+  title: 'Tray Tuner',
+  label: 'Audio stream URL:',
+  value: 'http://example.org',
+  inputAttrs: {
+    type: 'url',
+  },
+};
+
+export const aboutWindow = {
   icon_path: mainImages.aboutIcon,
   package_json_dir: path.join(__dirname, '../../'),
   win_options: {

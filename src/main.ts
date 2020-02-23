@@ -1,4 +1,10 @@
-import { aboutWindowTemplate, mainImages, store, randomSources } from './helpers/constants';
+import {
+  aboutWindow,
+  audioSourceDialog,
+  mainImages,
+  store,
+  randomSources,
+} from './helpers/constants';
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import prompt from 'electron-prompt';
 import openAboutWindow from 'about-window';
@@ -12,13 +18,33 @@ let hideInDock = false;
 let shouldQuit = false;
 
 // **
-// Create Tray
+// Main Window
+// **
+function createMainWindow() {
+  mainWindow = new BrowserWindow({
+    height: 580,
+    width: 580,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+
+  mainWindow.loadFile(path.join(__dirname, '../index.html'));
+
+  mainWindow.on('close', (e: Event) => {
+    mainWindow.hide();
+    !shouldQuit && e.preventDefault();
+  });
+}
+
+// **
+// Tray
 // **
 function createTray() {
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'About',
-      click: () => openAboutWindow(aboutWindowTemplate),
+      click: () => openAboutWindow(aboutWindow),
     },
     {
       label: 'Show Player',
@@ -49,27 +75,7 @@ function createTray() {
 }
 
 // **
-// Create Window
-// **
-function createWindow() {
-  mainWindow = new BrowserWindow({
-    height: 580,
-    width: 580,
-    webPreferences: {
-      nodeIntegration: true,
-    },
-  });
-
-  mainWindow.loadFile(path.join(__dirname, '../index.html'));
-
-  mainWindow.on('close', (e: Event) => {
-    mainWindow.hide();
-    !shouldQuit && e.preventDefault();
-  });
-}
-
-// **
-// Renderer Listener
+// Listeners
 // **
 ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'set-tray-play') {
@@ -109,14 +115,7 @@ function _toggleDockSetting() {
 }
 
 function _openAddAudio() {
-  prompt({
-    title: 'Tray Tuner',
-    label: 'Audio stream URL:',
-    value: 'http://example.org',
-    inputAttrs: {
-      type: 'url',
-    },
-  })
+  prompt(audioSourceDialog)
     .then((url: string) => {
       if (url === null) {
         return;
@@ -150,11 +149,11 @@ function loadSettings() {
 }
 
 // **
-// Main App
+// App
 // **
 app.on('ready', () => {
   createTray();
-  createWindow();
+  createMainWindow();
   loadSettings();
 });
 
@@ -162,6 +161,6 @@ app.on('activate', () => {
   mainWindow.show();
 });
 
-app.on('before-quit', function() {
+app.on('before-quit', () => {
   shouldQuit = true;
 });
