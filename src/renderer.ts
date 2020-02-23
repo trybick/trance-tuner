@@ -9,7 +9,7 @@ const player = document.getElementById('player') as HTMLAudioElement;
 const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
 const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInputElement;
 const audioSourceDisplay = document.getElementById('audio-source') as HTMLSpanElement;
-const settingsContainer = document.getElementById('settings') as HTMLDivElement;
+const expandedDrawer = document.getElementById('expanded-drawer') as HTMLDivElement;
 const settingsChevron = document.getElementById('chevron-settings') as HTMLImageElement;
 const audioErrorIcon = document.getElementById('audio-error-icon') as HTMLImageElement;
 
@@ -75,12 +75,12 @@ function toggleDockSetting() {
 }
 
 function toggleOpenSettings() {
-  const isHidden = window.getComputedStyle(settingsContainer).display === 'none';
+  const isHidden = window.getComputedStyle(expandedDrawer).display === 'none';
   if (isHidden) {
-    settingsContainer.style.display = 'block';
+    expandedDrawer.style.display = 'block';
     settingsChevron.src = images.chevronUp;
   } else {
-    settingsContainer.style.display = 'none';
+    expandedDrawer.style.display = 'none';
     settingsChevron.src = images.chevronDown;
   }
 }

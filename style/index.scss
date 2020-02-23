@@ -7,20 +7,14 @@
 .audio-section {
   margin-bottom: 50px;
 
-  .toggle-play {
+  .toggle-play-container {
     height: 80px;
     width: 62px;
     margin: 30px auto;
     position: relative;
 
-    .audio-error-icon {
-      display: none;
-      position: absolute;
-      top: 0;
-      right: -50px;
-    }
-
     .play-btn {
+      cursor: pointer;
       outline: none;
       border: 0;
       background: transparent;
@@ -29,7 +23,6 @@
       height: 74px;
       border-color: transparent transparent transparent #202020;
       transition: 100ms all ease;
-      cursor: pointer;
       border-style: solid;
       border-width: 37px 0 37px 60px;
 
@@ -41,12 +34,20 @@
         border-color: transparent transparent transparent #404040;
       }
     }
+
+    .audio-error-icon {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: -50px;
+    }
   }
 
   .volume-slider-container {
     text-align: center;
 
     .volume-slider {
+      cursor: pointer;
       -webkit-appearance: none;
       width: 140px;
       height: 20px;
@@ -57,17 +58,16 @@
       background-repeat: no-repeat;
       overflow: hidden;
       outline: none;
-      cursor: pointer;
 
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
+        cursor: pointer;
         width: 20px;
         height: 20px;
         background: orange;
         position: relative;
         z-index: 3;
         box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-        cursor: pointer;
 
         &:hover {
           background: blue;
@@ -89,7 +89,7 @@
   }
 }
 
-.settings-btn-container {
+.drawer-toggle {
   text-align: center;
   margin-bottom: 30px;
 
@@ -100,7 +100,7 @@
   }
 }
 
-.settings-container {
+.expanded-drawer {
   display: none;
   font-family: 'Work Sans', sans-serif;
 
@@ -108,27 +108,28 @@
     text-align: center;
     margin-bottom: 25px;
 
+    .source-display {
+      font-size: 18px;
+      text-decoration: underline;
+      max-width: 400px;
+      overflow: hidden;
+      margin: 0 auto;
+      white-space: nowrap;
+      margin-bottom: 14px;
+    }
+
     .edit-source-btn,
     .random-source-btn {
+      cursor: pointer;
       font-family: 'Work Sans', sans-serif;
       font-size: 15px;
       height: 30px;
       border: 0;
-      cursor: pointer;
       outline: 0;
-    }
-
-    .source-display {
-      font-size: 18px;
-      text-decoration: underline;
-      max-width: 300px;
-      overflow: hidden;
-      margin: 0 auto;
-      white-space: nowrap;
     }
   }
 
-  .proper-settings-container {
+  .settings-container {
     .settings-title {
       font-size: 16px;
     }

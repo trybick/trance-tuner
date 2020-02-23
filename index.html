@@ -10,45 +10,42 @@
 <body>
   <div class="app-container">
 
-    <!-- Audio Container -->
     <div class="audio-section">
       <audio id="player"></audio>
-      <div class="toggle-play">
+      <!-- Play Button -->
+      <div class="toggle-play-container">
         <button id="play-btn" class="play-btn" onclick="togglePlay()"></button>
         <img id="audio-error-icon" class="audio-error-icon" src="images/sad-cloud.png" />
       </div>
+      <!-- Volume Slider -->
       <div class="volume-slider-container">
         <input class="volume-slider" type="range" min="0" max="100" value="100" step="1"
           oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
       </div>
     </div>
 
-    <!-- Settings Toggle Button-->
-    <div class="settings-btn-container">
+    <!-- Drawer Toggle -->
+    <div class="drawer-toggle">
       <button onclick="toggleOpenSettings()">
         <img id="chevron-settings" src="images/chevron-down.png" />
       </button>
     </div>
 
-    <!-- Settings Container -->
-    <div id="settings" class="settings-container">
-
-      <!-- Audio Source -->
+    <div id="expanded-drawer" class="expanded-drawer">
+      <!-- Audio Source Display-->
       <div class="audio-source-container">
         <p class="source-display" id="audio-source">example.org</p>
         <button class="random-source-btn" onclick="setRandomSource()">Random</button>
         <button class="edit-source-btn" onclick="editAudioSource()">Edit</button>
       </div>
-
-      <!-- Proper Settings -->
-      <div class="proper-settings-container">
+      <!-- Settings -->
+      <div class="settings-container">
         <h4 class="settings-title">Settings</h4>
         <div class="dock-setting-container">
           <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
           <label for="dock-setting">Hide in Dock</label>
         </div>
       </div>
-
     </div>
 
   </div>
