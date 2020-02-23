@@ -40,7 +40,7 @@ ipc.on('dock-setting-enabled', () => {
   dockSettingCheckbox.checked = true;
 });
 
-ipc.on('source-update', (event, arg) => {
+ipc.on('source-update', (e, arg) => {
   player.src = arg;
   audioSourceDisplay.textContent = arg;
 });
@@ -54,12 +54,12 @@ function togglePlay() {
     ipc.send('asynchronous-message', 'set-tray-play');
     audioErrorIcon.style.display = 'block';
   } else if (player.paused) {
-    _clearAudioError();
+    audioErrorIcon.style.display = 'none';
     player.play();
     playBtn.classList.add('paused');
     ipc.send('asynchronous-message', 'set-tray-pause');
   } else {
-    _clearAudioError();
+    audioErrorIcon.style.display = 'none';
     player.pause();
     playBtn.classList.remove('paused');
     ipc.send('asynchronous-message', 'set-tray-play');
@@ -75,7 +75,8 @@ function toggleDockSetting() {
 }
 
 function toggleOpenSettings() {
-  if (window.getComputedStyle(settingsContainer).display === 'none') {
+  const isHidden = window.getComputedStyle(settingsContainer).display === 'none';
+  if (isHidden) {
     settingsContainer.style.display = 'block';
     settingsChevron.src = images.chevronUp;
   } else {
@@ -84,9 +85,9 @@ function toggleOpenSettings() {
   }
 }
 
-function openAddAudio() {
+function editAudioSource() {
   _resetAudioState();
-  ipc.send('asynchronous-message', 'open-add-audio');
+  ipc.send('asynchronous-message', 'open-edit-audio-dialog');
 }
 
 function setRandomSource() {
@@ -110,11 +111,7 @@ function _resetAudioState() {
     player.pause();
     playBtn.classList.add('paused');
   }
-  _clearAudioError();
+  audioErrorIcon.style.display = 'none';
   playBtn.classList.remove('paused');
   ipc.send('asynchronous-message', 'set-tray-play');
-}
-
-function _clearAudioError() {
-  audioErrorIcon.style.display = 'none';
 }

@@ -17,7 +17,6 @@
         <button id="play-btn" class="play-btn" onclick="togglePlay()"></button>
         <img id="audio-error-icon" class="audio-error-icon" src="images/sad-cloud.png" />
       </div>
-
       <div class="volume-slider-container">
         <input class="volume-slider" type="range" min="0" max="100" value="100" step="1"
           oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
@@ -38,7 +37,7 @@
       <div class="audio-source-container">
         <p class="source-display" id="audio-source">example.org</p>
         <button class="random-source-btn" onclick="setRandomSource()">Random</button>
-        <button class="edit-source-btn" onclick="openAddAudio()">Edit</button>
+        <button class="edit-source-btn" onclick="editAudioSource()">Edit</button>
       </div>
 
       <!-- Proper Settings -->

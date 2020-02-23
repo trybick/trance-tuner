@@ -87,8 +87,8 @@ ipcMain.on('asynchronous-message', (event, arg) => {
   if (arg === 'toggle-dock-setting') {
     _toggleDockSetting();
   }
-  if (arg === 'open-add-audio') {
-    _openAddAudio();
+  if (arg === 'open-edit-audio-dialog') {
+    _openEditAudioDialog();
   }
   if (arg === 'save-default-ahFm') {
     store.set('audio.source', randomSources.ahFm);
@@ -114,7 +114,7 @@ function _toggleDockSetting() {
   }
 }
 
-function _openAddAudio() {
+function _openEditAudioDialog() {
   prompt(audioSourceDialog)
     .then((url: string) => {
       if (url === null) {
