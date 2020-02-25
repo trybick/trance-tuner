@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Cantarell:400i|Work+Sans:400,600&display=swap');
 
+$base: #ffffff;
+$secondary: #333333;
+$tertiary: #706c61;
+$quad: #e1f4f3;
+
+body {
+  background-color: $base;
+}
+
 .app-container {
   padding: 5px 40px;
 }
@@ -21,7 +30,7 @@
       box-sizing: border-box;
       width: 0;
       height: 74px;
-      border-color: transparent transparent transparent #202020;
+      border-color: transparent transparent transparent $secondary;
       transition: 100ms all ease;
       border-style: solid;
       border-width: 37px 0 37px 60px;
@@ -31,7 +40,7 @@
         border-width: 0px 0 0px 60px;
       }
       &:hover {
-        border-color: transparent transparent transparent #404040;
+        border-color: transparent transparent transparent #373e46;
       }
     }
 
@@ -47,15 +56,16 @@
     text-align: center;
 
     .volume-slider {
-      cursor: pointer;
       -webkit-appearance: none;
+      cursor: pointer;
       width: 140px;
-      height: 20px;
+      height: 26px;
       margin: 10px 0;
-      background: linear-gradient(to right, black 0%, black 100%);
-      background-size: 150px 10px;
-      background-position: center;
-      background-repeat: no-repeat;
+      background-color: $secondary;
+      // background: linear-gradient(to right, black 0%, black 100%);
+      // background-size: 150px 10px;
+      // background-position: center;
+      // background-repeat: no-repeat;
       overflow: hidden;
       outline: none;
 
@@ -64,27 +74,27 @@
         cursor: pointer;
         width: 20px;
         height: 20px;
-        background: orange;
+        background: $tertiary;
         position: relative;
         z-index: 3;
-        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+        // box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
 
         &:hover {
-          background: blue;
+          background: $base;
         }
       }
 
-      &::-webkit-slider-thumb:after {
-        content: ' ';
-        width: 160px;
-        height: 10px;
-        position: absolute;
-        z-index: 1;
-        right: 20px;
-        top: 5px;
-        background: #ff5b32;
-        background: linear-gradient(to right, #f088fc 1%, #ac6cff 70%);
-      }
+      // &::-webkit-slider-thumb:after {
+      //   content: ' ';
+      //   width: 160px;
+      //   height: 10px;
+      //   position: absolute;
+      //   z-index: 1;
+      //   right: 20px;
+      //   top: 5px;
+      //   background: #ff5b32;
+      //   background: linear-gradient(to right, #f088fc 1%, #ac6cff 70%);
+      // }
     }
   }
 }
@@ -94,7 +104,7 @@
   margin-bottom: 30px;
 
   button {
-    background-color: white;
+    background-color: $quad;
     border: 0;
     outline: 0;
   }
