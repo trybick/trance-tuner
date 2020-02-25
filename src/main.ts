@@ -78,23 +78,25 @@ function createTray() {
 // Listeners
 // **
 ipcMain.on('asynchronous-message', (event, arg) => {
-  if (arg === 'set-tray-play') {
-    tray.setImage(mainImages.playIcon);
-  }
-  if (arg === 'set-tray-pause') {
-    tray.setImage(mainImages.pauseIcon);
-  }
-  if (arg === 'toggle-dock-setting') {
-    _toggleDockSetting();
-  }
-  if (arg === 'open-edit-audio-dialog') {
-    _openEditAudioDialog();
-  }
-  if (arg === 'save-default-ahFm') {
-    store.set('audio.source', randomSources.ahFm);
-  }
-  if (arg === 'save-default-revolution') {
-    store.set('audio.source', randomSources.revolutionRadio);
+  switch (arg) {
+    case 'set-tray-play':
+      tray.setImage(mainImages.playIcon);
+      break;
+    case 'set-tray-pause':
+      tray.setImage(mainImages.pauseIcon);
+      break;
+    case 'toggle-dock-setting':
+      _toggleDockSetting();
+      break;
+    case 'open-edit-audio-dialog':
+      _openEditAudioDialog();
+      break;
+    case 'save-default-ahFm':
+      store.set('audio.source', randomSources.ahFm);
+      break;
+    case 'save-default-revolution':
+      store.set('audio.source', randomSources.revolutionRadio);
+      break;
   }
 });
 
