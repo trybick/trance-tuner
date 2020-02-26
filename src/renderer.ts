@@ -49,20 +49,22 @@ ipc.on('source-update', (e, arg) => {
 // Functions
 // **
 function togglePlay() {
-  if (player.error) {
-    playBtn.classList.remove('paused');
-    ipc.send('asynchronous-message', 'set-tray-play');
-    audioErrorIcon.style.display = 'block';
-  } else if (player.paused) {
-    audioErrorIcon.style.display = 'none';
-    player.play();
-    playBtn.classList.add('paused');
-    ipc.send('asynchronous-message', 'set-tray-pause');
-  } else {
-    audioErrorIcon.style.display = 'none';
-    player.pause();
-    playBtn.classList.remove('paused');
-    ipc.send('asynchronous-message', 'set-tray-play');
+  try {
+    if (player.error) {
+      _handlePlayError();
+    } else if (player.paused) {
+      audioErrorIcon.style.display = 'none';
+      player.play();
+      playBtn.classList.add('paused');
+      ipc.send('asynchronous-message', 'set-tray-pause');
+    } else {
+      audioErrorIcon.style.display = 'none';
+      player.pause();
+      playBtn.classList.remove('paused');
+      ipc.send('asynchronous-message', 'set-tray-play');
+    }
+  } catch {
+    _handlePlayError();
   }
 }
 
@@ -114,4 +116,10 @@ function _resetAudioState() {
   audioErrorIcon.style.display = 'none';
   playBtn.classList.remove('paused');
   ipc.send('asynchronous-message', 'set-tray-play');
+}
+
+function _handlePlayError() {
+  playBtn.classList.remove('paused');
+  ipc.send('asynchronous-message', 'set-tray-play');
+  audioErrorIcon.style.display = 'block';
 }
