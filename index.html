@@ -18,15 +18,16 @@
         <img id="audio-error-icon" class="audio-error-icon" src="images/sad-cloud.png" />
       </div>
       <!-- Volume Slider -->
-      <div class="volume-slider-container">
-        <input class="volume-slider" type="range" min="0" max="100" value="100" step="1"
-          oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
+      <div class="container">
+        <div class="fill" id="range-fill"></div>
+        <input id="range-slider-input" class="volume-slider" type="range" min="0" max="100"
+          value="100" name="rangeslider" oninput="setVolume(this.value)" />
       </div>
     </div>
 
     <!-- Drawer Toggle -->
     <div class="drawer-toggle">
-      <button onclick="toggleOpenSettings()">
+      <button onclick="toggleOpenDrawer()">
         <img id="chevron-settings" src="images/chevron-down.png" />
       </button>
     </div>

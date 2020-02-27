@@ -12,6 +12,7 @@ const audioSourceDisplay = document.getElementById('audio-source') as HTMLSpanEl
 const expandedDrawer = document.getElementById('expanded-drawer') as HTMLDivElement;
 const settingsChevron = document.getElementById('chevron-settings') as HTMLImageElement;
 const audioErrorIcon = document.getElementById('audio-error-icon') as HTMLImageElement;
+const volumeFill = document.getElementById('range-fill') as HTMLDivElement;
 
 const images = {
   chevronUp: 'images/chevron-up.png',
@@ -70,13 +71,14 @@ function togglePlay() {
 
 function setVolume(val: HTMLInputElement['value']) {
   player.volume = +val / 100;
+  volumeFill.style.width = `${+val}%`;
 }
 
 function toggleDockSetting() {
   ipc.send('asynchronous-message', 'toggle-dock-setting');
 }
 
-function toggleOpenSettings() {
+function toggleOpenDrawer() {
   const isHidden = window.getComputedStyle(expandedDrawer).display === 'none';
   if (isHidden) {
     expandedDrawer.style.display = 'block';
