@@ -12,7 +12,7 @@ const audioSourceDisplay = document.getElementById('audio-source') as HTMLSpanEl
 const expandedDrawer = document.getElementById('expanded-drawer') as HTMLDivElement;
 const settingsChevron = document.getElementById('chevron-settings') as HTMLImageElement;
 const audioErrorIcon = document.getElementById('audio-error-icon') as HTMLImageElement;
-const volumeFill = document.getElementById('range-fill') as HTMLDivElement;
+const volumeFill = document.getElementById('vol-slider-fill') as HTMLDivElement;
 
 const images = {
   chevronUp: 'images/chevron-up.png',
