@@ -1,24 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Cantarell:400i|Work+Sans:400,600&display=swap');
+@import './sheets/volumeSlider.scss';
 
 $base: #ffffff;
 $secondary: #333333;
 $tertiary: #706c61;
 $quad: #e1f4f3;
-
-$background-color: #282d32;
-
-$width: 500px;
-$height: 40px;
-
-$bar-height: 10px;
-$border-radius: 8px;
-$bar-color: transparent;
-$bar-fill: #706c61;
-
-$cursor-size: 30px;
-$cursor-color: #706c61;
-$cursor-border-size: 3px;
-$cursor-border: $background-color;
 
 body {
   background-color: $secondary;
@@ -64,64 +50,6 @@ body {
       position: absolute;
       top: 0;
       right: -50px;
-    }
-  }
-
-  .vol-slider {
-    position: relative;
-    display: inline-block;
-    width: $width;
-    height: $height;
-
-    &-fill {
-      position: absolute;
-      box-sizing: border-box;
-      display: inline-block;
-      left: 0;
-      top: $height/2 - $bar-height/2;
-      border-radius: $border-radius;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      width: calc(100% - 5px);
-      height: $bar-height;
-      background: $bar-fill;
-    }
-
-    &-input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      -webkit-appearance: none;
-      width: $width;
-      height: $height;
-      background: transparent;
-      padding: 0;
-      box-sizing: border-box;
-      cursor: pointer;
-
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        border: $cursor-border-size solid $cursor-border;
-        height: $cursor-size;
-        width: $cursor-size;
-        border-radius: 50%;
-        background: $cursor-color;
-        cursor: pointer;
-        margin-top: -11px;
-      }
-
-      &::-webkit-slider-runnable-track {
-        width: $width;
-        height: $bar-height;
-        cursor: pointer;
-        background: $bar-color;
-        border-radius: $border-radius;
-        border: 1px solid $bar-fill;
-      }
-
-      &:focus {
-        outline: none;
-      }
     }
   }
 }
