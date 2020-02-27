@@ -87,7 +87,6 @@ body {
       background: $bar-fill;
     }
 
-    // reset styles
     &-input {
       position: absolute;
       top: 0;
@@ -100,29 +99,6 @@ body {
       box-sizing: border-box;
       cursor: pointer;
 
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-      }
-
-      &::-ms-track {
-        width: $width;
-        cursor: pointer;
-        background: transparent;
-        border-color: transparent;
-        color: transparent;
-      }
-
-      &:focus {
-        outline: none;
-      }
-
-      &::-moz-focus-outer {
-        border: 0;
-      }
-    }
-
-    // webkit browsers
-    &-input {
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         border: $cursor-border-size solid $cursor-border;
@@ -141,6 +117,10 @@ body {
         background: $bar-color;
         border-radius: $border-radius;
         border: 1px solid $bar-fill;
+      }
+
+      &:focus {
+        outline: none;
       }
     }
   }
