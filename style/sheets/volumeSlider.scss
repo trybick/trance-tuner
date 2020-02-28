@@ -1,17 +1,16 @@
 @import '../colors';
 
-$width: 500px;
+$width: 180px;
 $height: 40px;
-
 $bar-height: 10px;
 $border-radius: 8px;
 $bar-color: transparent;
-$bar-fill: black;
-
 $cursor-size: 30px;
-$cursor-color: black;
 $cursor-border-size: 3px;
-$cursor-border: #282d32;
+
+$bar-fill: black; // filled color
+$cursor-color: white; // knob primary color
+$cursor-border: black; // knob border
 
 .vol-slider {
   position: relative;
@@ -34,6 +33,7 @@ $cursor-border: #282d32;
   }
 
   &-input {
+    margin: 0;
     position: absolute;
     top: 0;
     left: 0;
