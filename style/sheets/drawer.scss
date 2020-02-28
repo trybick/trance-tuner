@@ -1,0 +1,52 @@
+@import '../colors';
+
+.drawer-toggle {
+  text-align: center;
+  margin-bottom: 30px;
+
+  button {
+    background-color: $quad;
+    border: 0;
+    outline: 0;
+  }
+}
+
+.expanded-drawer {
+  display: none;
+  font-family: 'Work Sans', sans-serif;
+
+  .audio-source-container {
+    text-align: center;
+    margin-bottom: 25px;
+
+    .source-display {
+      font-size: 18px;
+      text-decoration: underline;
+      max-width: 400px;
+      overflow: hidden;
+      margin: 0 auto;
+      white-space: nowrap;
+      margin-bottom: 14px;
+    }
+
+    .edit-source-btn,
+    .random-source-btn {
+      cursor: pointer;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 15px;
+      height: 30px;
+      border: 0;
+      outline: 0;
+    }
+  }
+
+  .settings-container {
+    .settings-title {
+      font-size: 16px;
+    }
+
+    .dock-setting-container {
+      margin-bottom: 40px;
+    }
+  }
+}
