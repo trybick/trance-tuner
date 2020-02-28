@@ -6,10 +6,10 @@ $height: 40px;
 $bar-height: 10px;
 $border-radius: 8px;
 $bar-color: transparent;
-$bar-fill: #706c61;
+$bar-fill: black;
 
 $cursor-size: 30px;
-$cursor-color: #706c61;
+$cursor-color: black;
 $cursor-border-size: 3px;
 $cursor-border: #282d32;
 
@@ -30,7 +30,7 @@ $cursor-border: #282d32;
     border-bottom-right-radius: 0;
     width: calc(100% - 5px);
     height: $bar-height;
-    background: $bar-fill;
+    background: $secondary;
   }
 
   &-input {
