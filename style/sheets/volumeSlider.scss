@@ -5,11 +5,11 @@ $height: 40px;
 $bar-height: 10px;
 $border-radius: 8px;
 $bar-color: transparent;
-$cursor-size: 30px;
+$cursor-size: 20px;
 $cursor-border-size: 3px;
 
 $bar-fill: black; // filled color
-$cursor-color: white; // knob primary color
+$cursor-color: black; // knob primary color
 $cursor-border: black; // knob border
 
 .vol-slider {
@@ -47,13 +47,13 @@ $cursor-border: black; // knob border
 
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
-      border: $cursor-border-size solid $cursor-border;
+      // border: $cursor-border-size solid $cursor-border;
       height: $cursor-size;
       width: $cursor-size;
       border-radius: 50%;
       background: $cursor-color;
       cursor: pointer;
-      margin-top: -11px;
+      margin-top: -6px;
     }
 
     &::-webkit-slider-runnable-track {
