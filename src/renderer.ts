@@ -27,12 +27,6 @@ const randomSources = {
 // **
 // Listeners
 // **
-document.body.onkeydown = e => {
-  if (e.code === 'Space' || e.code === 'Enter') {
-    togglePlay();
-  }
-};
-
 ipc.on('tray-clicked', () => {
   togglePlay();
 });
