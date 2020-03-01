@@ -8,9 +8,9 @@ $bar-color: transparent;
 $cursor-size: 20px;
 $cursor-border-size: 3px;
 
-$bar-fill: black; // filled color
-$cursor-color: black; // knob primary color
-$cursor-border: black; // knob border
+$bar-fill: $secondary; // filled color
+$cursor-color: $secondary; // knob primary color
+$cursor-border: $secondary; // knob border
 
 .vol-slider {
   position: relative;
