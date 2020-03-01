@@ -5,7 +5,7 @@
   margin-bottom: 30px;
 
   button {
-    background-color: $secondary;
+    background-color: $base;
     border: 0;
     outline: 0;
   }
@@ -32,6 +32,7 @@
     .edit-source-btn,
     .random-source-btn {
       cursor: pointer;
+      background-color: $base;
       font-family: 'Work Sans', sans-serif;
       font-size: 15px;
       height: 30px;
