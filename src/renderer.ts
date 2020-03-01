@@ -64,8 +64,15 @@ function togglePlay() {
 }
 
 function setVolume(val: HTMLInputElement['value']) {
-  player.volume = +val / 100;
-  volumeFill.style.width = `${+val}%`;
+  const volume = Number(val);
+  let filledVolume = volume;
+
+  if (volume > 95) filledVolume -= 5;
+
+  player.volume = volume / 100;
+  console.log('player.volume:', player.volume);
+  volumeFill.style.width = `${filledVolume}%`;
+  console.log('filledVolume:', filledVolume);
 }
 
 function toggleDockSetting() {
