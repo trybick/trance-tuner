@@ -16,11 +16,12 @@ export const mainImages = {
 
 export const audioSourceDialog = {
   title: 'Tray Tuner',
-  label: 'Audio stream URL:',
+  label: 'Audio URL:',
   value: 'http://example.org',
   inputAttrs: {
     type: 'url',
   },
+  customStylesheet: path.join(__dirname, '../../dist/index.css'),
 };
 
 export const aboutWindow = {

@@ -1,0 +1,26 @@
+@import '../colors';
+
+// Uses ids from electron-prompt library
+
+div#label {
+  color: $secondary;
+  font-family: 'Work Sans', sans-serif;
+}
+
+input#data {
+  font-family: 'Work Sans', sans-serif;
+  color: $secondary;
+  height: 32px;
+  font-size: 15px;
+}
+
+button#ok {
+  cursor: pointer;
+  color: $base;
+  background-color: $source_display;
+}
+
+button#cancel {
+  cursor: pointer;
+  color: $secondary;
+}
