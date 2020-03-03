@@ -22,7 +22,10 @@ const images = {
 const randomSources = {
   ahFm: 'http://us2.ah.fm/192k/;stream/1',
   revolutionRadio: 'https://revolutionradio.ru:8443/live.mp3',
+  moveDaHouse: 'https://uk7.internet-radio.com/proxy/movedahouse?mp=/stream',
 };
+
+const randomSourcesArray = Object.values(randomSources);
 
 // **
 // Listeners
@@ -98,13 +101,16 @@ function editAudioSource() {
 function setRandomSource() {
   _resetAudioState();
 
-  const { ahFm, revolutionRadio } = randomSources;
-  const randomSource = player.src === ahFm ? revolutionRadio : ahFm;
-  player.src = randomSource;
-  audioSourceDisplay.textContent = randomSource;
+  const newRandom = randomSourcesArray[0];
+  console.log('newRandom:', newRandom);
+  randomSourcesArray.push(randomSourcesArray.shift()); // move first to last
+  console.log('randomSourcesArray:', randomSourcesArray);
+
+  player.src = newRandom;
+  audioSourceDisplay.textContent = newRandom;
 
   // I don't love this
-  if (randomSource.includes('revolution')) {
+  if (newRandom.includes('revolution')) {
     ipc.send('asynchronous-message', 'save-default-revolution');
   } else {
     ipc.send('asynchronous-message', 'save-default-ahFm');
