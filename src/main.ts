@@ -91,11 +91,15 @@ ipcMain.on('asynchronous-message', (event, arg) => {
     case 'open-edit-audio-dialog':
       _openEditAudioDialog();
       break;
+    // This method of saving default sources = not ideal :)
     case 'save-default-ahFm':
       store.set('audio.source', randomSources.ahFm);
       break;
     case 'save-default-revolution':
       store.set('audio.source', randomSources.revolutionRadio);
+      break;
+    case 'save-default-movedahouse':
+      store.set('audio.source', randomSources.moveDaHouse);
       break;
   }
 });

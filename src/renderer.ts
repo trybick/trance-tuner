@@ -101,10 +101,9 @@ function editAudioSource() {
 function setRandomSource() {
   _resetAudioState();
 
+  // To avoid repeats, pick first item and move it to last
   const newRandom = randomSourcesArray[0];
-  console.log('newRandom:', newRandom);
-  randomSourcesArray.push(randomSourcesArray.shift()); // move first to last
-  console.log('randomSourcesArray:', randomSourcesArray);
+  randomSourcesArray.push(randomSourcesArray.shift());
 
   player.src = newRandom;
   audioSourceDisplay.textContent = newRandom;
@@ -112,6 +111,8 @@ function setRandomSource() {
   // I don't love this
   if (newRandom.includes('revolution')) {
     ipc.send('asynchronous-message', 'save-default-revolution');
+  } else if (newRandom.includes('movedahouse')) {
+    ipc.send('asynchronous-message', 'save-default-movedahouse');
   } else {
     ipc.send('asynchronous-message', 'save-default-ahFm');
   }

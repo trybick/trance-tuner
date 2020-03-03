@@ -6,6 +6,7 @@ export const store = new Store();
 export const randomSources = {
   ahFm: 'http://us2.ah.fm/192k/;stream/1',
   revolutionRadio: 'https://revolutionradio.ru:8443/live.mp3',
+  moveDaHouse: 'https://uk7.internet-radio.com/proxy/movedahouse?mp=/stream',
 };
 
 export const mainImages = {
