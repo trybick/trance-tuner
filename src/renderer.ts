@@ -38,9 +38,9 @@ ipc.on('dock-setting-enabled', () => {
   dockSettingCheckbox.checked = true;
 });
 
-ipc.on('source-update', (e, arg) => {
-  player.src = arg;
-  audioSourceDisplay.textContent = arg;
+ipc.on('source-update', (e, savedSource) => {
+  player.src = savedSource;
+  audioSourceDisplay.textContent = savedSource;
 });
 
 // **
