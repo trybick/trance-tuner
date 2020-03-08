@@ -102,8 +102,14 @@ function setRandomSource() {
   _resetAudioState();
 
   // To avoid repeats, pick first item and move it to last
-  const newRandom = randomSourcesArray[0];
+  let newRandom = randomSourcesArray[0];
   randomSourcesArray.push(randomSourcesArray.shift());
+
+  // Check if this source is currently set
+  if (newRandom === player.src) {
+    newRandom = randomSourcesArray[0];
+    randomSourcesArray.push(randomSourcesArray.shift());
+  }
 
   player.src = newRandom;
   audioSourceDisplay.textContent = newRandom;
