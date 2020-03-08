@@ -40,7 +40,7 @@ ipc.on('dock-setting-enabled', () => {
 
 ipc.on('source-update', (e, savedSource) => {
   player.src = savedSource;
-  audioSourceDisplay.textContent = savedSource;
+  audioSourceDisplay.textContent = _createCleanDisplaySource(savedSource);
 });
 
 // **
@@ -73,9 +73,7 @@ function setVolume(val: HTMLInputElement['value']) {
   if (volume > 95) filledVolume -= 5;
 
   player.volume = volume / 100;
-  console.log('player.volume:', player.volume);
   volumeFill.style.width = `${filledVolume}%`;
-  console.log('filledVolume:', filledVolume);
 }
 
 function toggleDockSetting() {
@@ -112,7 +110,7 @@ function setRandomSource() {
   }
 
   player.src = newRandom;
-  audioSourceDisplay.textContent = newRandom;
+  audioSourceDisplay.textContent = _createCleanDisplaySource(newRandom);
 
   // I don't love this
   if (newRandom.includes('revolution')) {
@@ -138,4 +136,9 @@ function _handlePlayError() {
   playBtn.classList.remove('paused');
   ipc.send('asynchronous-message', 'set-tray-play');
   audioErrorIcon.style.display = 'block';
+}
+
+// Remove https:// from URL for display
+function _createCleanDisplaySource(url: string) {
+  return url.replace(/(^\w+:|^)\/\//, '');
 }
