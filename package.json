@@ -20,7 +20,6 @@
   ],
   "scripts": {
     "build": "tsc",
-    "watch": "tsc -w",
     "sass": "sass ./style/index.scss ./dist/index.css",
     "start": "npm run sass && npm run build && electron ./dist/main.js"
   },
