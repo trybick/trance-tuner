@@ -8,7 +8,7 @@ const ipc = electron.ipcRenderer;
 const player = document.getElementById('player') as HTMLAudioElement;
 const playBtn = document.getElementById('play-btn') as HTMLButtonElement;
 const dockSettingCheckbox = document.getElementById('dock-setting') as HTMLInputElement;
-const audioSourceDisplay = document.getElementById('audio-source') as HTMLSpanElement;
+const audioSourceDisplay = document.getElementById('source-display') as HTMLSpanElement;
 const expandedDrawer = document.getElementById('expanded-drawer') as HTMLDivElement;
 const settingsChevron = document.getElementById('chevron-settings') as HTMLImageElement;
 const audioErrorIcon = document.getElementById('audio-error-icon') as HTMLImageElement;
@@ -20,9 +20,9 @@ const images = {
 };
 
 const randomSources = {
-  ahFm: 'http://us2.ah.fm/192k/;stream/1',
   revolutionRadio: 'https://revolutionradio.ru:8443/live.mp3',
   moveDaHouse: 'https://uk7.internet-radio.com/proxy/movedahouse?mp=/stream',
+  ahFm: 'http://us2.ah.fm/192k/;stream/1',
 };
 
 const randomSourcesArray = Object.values(randomSources);
