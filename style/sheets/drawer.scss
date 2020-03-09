@@ -12,53 +12,16 @@
 }
 
 .expanded-drawer {
-  display: none;
+  display: none; // settings start as hidden
   font-family: 'Work Sans', sans-serif;
 
-  .audio-source-container {
-    text-align: center;
-    margin-bottom: 25px;
-
-    .audio-source-title {
-      font-size: 20px;
-      font-weight: 500;
-      color: $secondary;
-    }
-
-    .source-display {
-      color: $source_display;
-      font-size: 16px;
-      text-decoration: underline;
-      max-width: 320px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin: 0 auto;
-      white-space: nowrap;
-      margin-bottom: 14px;
-    }
-
-    .edit-source-btn,
-    .random-source-btn {
-      cursor: pointer;
-      background-color: $base;
-      color: $secondary;
-      font-family: 'Work Sans', sans-serif;
-      font-size: 15px;
-      height: 30px;
-      border: 0;
-      outline: 0;
-    }
+  .settings-title {
+    font-size: 16px;
+    color: $secondary;
   }
 
-  .settings-container {
-    .settings-title {
-      font-size: 16px;
-      color: $secondary;
-    }
-
-    .dock-setting-container {
-      margin-bottom: 40px;
-      color: $secondary;
-    }
+  .dock-setting-container {
+    margin-bottom: 40px;
+    color: $secondary;
   }
 }

@@ -10,19 +10,26 @@
 <body>
   <div class="app-container">
 
-    <div class="audio-section">
+    <!-- Audio Controls -->
+    <div class="audio-controls">
       <audio id="player" src="http://us2.ah.fm/192k/;stream/1"></audio>
-      <!-- Play Button -->
       <div class="toggle-play-container">
         <button id="play-btn" class="play-btn" onclick="togglePlay()"></button>
         <img id="audio-error-icon" class="audio-error-icon" src="images/sad-cloud.png" />
       </div>
-      <!-- Volume Slider -->
       <div class="vol-slider">
         <div class="vol-slider-fill" id="vol-slider-fill"></div>
         <input class="vol-slider-input" type="range" min="0" max="100" value="100" step="1"
           oninput="setVolume(this.value)" />
       </div>
+    </div>
+
+    <!-- Audio Source Display-->
+    <div class="audio-source-container">
+      <h3 class="audio-source-title">Audio Source:</h3>
+      <p class="source-display" id="source-display">us2.ah.fm/192k/;stream/1</p>
+      <button class="random-source-btn" onclick="setRandomSource()">Random</button>
+      <button class="edit-source-btn" onclick="editAudioSource()">Edit</button>
     </div>
 
     <!-- Drawer Toggle -->
@@ -32,21 +39,12 @@
       </button>
     </div>
 
+    <!-- Drawer Settings -->
     <div id="expanded-drawer" class="expanded-drawer">
-      <!-- Audio Source Display-->
-      <div class="audio-source-container">
-        <h3 class="audio-source-title">Audio Source:</h3>
-        <p class="source-display" id="source-display">us2.ah.fm/192k/;stream/1</p>
-        <button class="random-source-btn" onclick="setRandomSource()">Random</button>
-        <button class="edit-source-btn" onclick="editAudioSource()">Edit</button>
-      </div>
-      <!-- Settings -->
-      <div class="settings-container">
-        <h4 class="settings-title">Settings</h4>
-        <div class="dock-setting-container">
-          <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
-          <label for="dock-setting">Hide in Dock</label>
-        </div>
+      <h4 class="settings-title">Settings</h4>
+      <div class="dock-setting-container">
+        <input id="dock-setting" type="checkbox" onclick="toggleDockSetting()"></input>
+        <label for="dock-setting">Hide in Dock</label>
       </div>
     </div>
 
@@ -56,5 +54,4 @@
   <script type="text/javascript" src="dist/renderer.js"></script>
 
 </body>
-
 </html>
