@@ -22,8 +22,8 @@ let shouldQuit = false;
 // **
 function createMainWindow() {
   mainWindow = new BrowserWindow({
-    height: 580,
-    width: 580,
+    height: 500,
+    width: 310,
     webPreferences: {
       nodeIntegration: true,
     },

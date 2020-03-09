@@ -43,7 +43,7 @@
 .audio-source-container {
   font-family: 'Work Sans', sans-serif;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 
   .audio-source-title {
     font-size: 20px;
@@ -55,7 +55,7 @@
     color: $source_display;
     font-size: 16px;
     text-decoration: underline;
-    max-width: 320px;
+    max-width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 auto;
