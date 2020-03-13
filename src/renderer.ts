@@ -54,11 +54,13 @@ function togglePlay() {
       audioErrorIcon.style.display = 'none';
       player.play();
       playBtn.classList.add('paused');
+
       ipc.send('asynchronous-message', 'set-tray-pause');
     } else {
       audioErrorIcon.style.display = 'none';
       player.pause();
       playBtn.classList.remove('paused');
+
       ipc.send('asynchronous-message', 'set-tray-play');
     }
   } catch {
@@ -82,12 +84,17 @@ function toggleDockSetting() {
 
 function toggleOpenDrawer() {
   const isHidden = window.getComputedStyle(expandedDrawer).display === 'none';
+
   if (isHidden) {
     expandedDrawer.style.display = 'block';
     settingsChevron.src = images.chevronUp;
+
+    ipc.send('asynchronous-message', 'increase-window-size');
   } else {
     expandedDrawer.style.display = 'none';
     settingsChevron.src = images.chevronDown;
+
+    ipc.send('asynchronous-message', 'decrease-window-size');
   }
 }
 

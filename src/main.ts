@@ -4,6 +4,7 @@ import {
   mainImages,
   store,
   randomSources,
+  windowHeightWithDrawerClosed,
 } from './helpers/constants';
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import prompt from 'electron-prompt';
@@ -22,7 +23,7 @@ let shouldQuit = false;
 // **
 function createMainWindow() {
   mainWindow = new BrowserWindow({
-    height: 500,
+    height: windowHeightWithDrawerClosed,
     width: 310,
     webPreferences: {
       nodeIntegration: true,
@@ -100,6 +101,12 @@ ipcMain.on('asynchronous-message', (event, arg) => {
       break;
     case 'save-default-movedahouse':
       store.set('audio.source', randomSources.moveDaHouse);
+      break;
+    case 'decrease-window-size':
+      mainWindow.setSize(310, windowHeightWithDrawerClosed);
+      break;
+    case 'increase-window-size':
+      mainWindow.setSize(310, 500);
       break;
   }
 });

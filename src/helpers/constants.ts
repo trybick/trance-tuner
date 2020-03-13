@@ -3,6 +3,8 @@ import Store from 'electron-store';
 
 export const store = new Store();
 
+export const windowHeightWithDrawerClosed = 425;
+
 export const randomSources = {
   ahFm: 'http://us2.ah.fm/192k/;stream/1',
   revolutionRadio: 'https://revolutionradio.ru:8443/live.mp3',
