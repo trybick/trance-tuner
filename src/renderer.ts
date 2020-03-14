@@ -38,6 +38,14 @@ ipc.on('dock-setting-enabled', () => {
   dockSettingCheckbox.checked = true;
 });
 
+ipc.on('kbd-toggle-play', () => {
+  togglePlay();
+});
+
+ipc.on('kbd-random-source', () => {
+  setRandomSource();
+});
+
 ipc.on('source-update', (e, savedSource) => {
   player.src = savedSource;
   audioSourceDisplay.textContent = _createCleanDisplaySource(savedSource);

@@ -1,3 +1,7 @@
+import { app, BrowserWindow, globalShortcut, ipcMain, Menu, Tray } from 'electron';
+import prompt from 'electron-prompt';
+import openAboutWindow from 'about-window';
+import * as path from 'path';
 import {
   aboutWindow,
   audioSourceDialog,
@@ -6,10 +10,6 @@ import {
   randomSources,
   windowHeightWithDrawerClosed,
 } from './helpers/constants';
-import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
-import prompt from 'electron-prompt';
-import openAboutWindow from 'about-window';
-import * as path from 'path';
 
 let tray: Tray | null = null;
 let mainWindow: Electron.BrowserWindow;
@@ -161,12 +161,31 @@ function loadSettings() {
 }
 
 // **
+// Keyboard Shortcuts
+//
+
+function registerKeyboardShortcuts() {
+  globalShortcut.register('CommandOrControl+Ctrl+Shift+Z', () => {
+    mainWindow.webContents.send('kbd-toggle-play');
+  });
+
+  globalShortcut.register('CommandOrControl+Ctrl+Shift+R', () => {
+    mainWindow.webContents.send('kbd-random-source');
+  });
+
+  globalShortcut.register('CommandOrControl+Ctrl+Shift+W', () => {
+    mainWindow.show();
+  });
+}
+
+// **
 // App
 // **
 app.on('ready', () => {
   createTray();
   createMainWindow();
   loadSettings();
+  registerKeyboardShortcuts();
 });
 
 app.on('activate', () => {
@@ -175,4 +194,5 @@ app.on('activate', () => {
 
 app.on('before-quit', () => {
   shouldQuit = true;
+  globalShortcut.unregisterAll();
 });
