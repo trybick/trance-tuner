@@ -10,8 +10,6 @@ import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
 import prompt from 'electron-prompt';
 import openAboutWindow from 'about-window';
 import * as path from 'path';
-import electronReloader from 'electron-reloader';
-electronReloader(module);
 
 let tray: Tray | null = null;
 let mainWindow: Electron.BrowserWindow;
@@ -25,6 +23,7 @@ function createMainWindow() {
   mainWindow = new BrowserWindow({
     height: windowHeightWithDrawerClosed,
     width: 310,
+    icon: __dirname + '/images/music-record.ico',
     webPreferences: {
       nodeIntegration: true,
     },
