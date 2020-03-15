@@ -4,3 +4,7 @@
 @import './sheets/volumeSlider.scss';
 @import './sheets/drawer.scss';
 @import './sheets/sourceDialog.scss';
+
+::-webkit-scrollbar {
+  display: none;
+}
