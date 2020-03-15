@@ -1,7 +1,7 @@
 {
   "name": "tray-tuner",
   "productName": "Tray Tuner",
-  "version": "0.0.3",
+  "version": "1.0.1",
   "description": "Control radio streams from system tray",
   "author": "Tim Rybicki",
   "license": "MIT",

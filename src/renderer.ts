@@ -44,6 +44,7 @@ ipc.on('kbd-toggle-play', () => {
 
 ipc.on('kbd-random-source', () => {
   setRandomSource();
+  togglePlay();
 });
 
 ipc.on('source-update', (e, savedSource) => {
