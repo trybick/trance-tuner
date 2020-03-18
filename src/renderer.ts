@@ -61,6 +61,7 @@ function togglePlay() {
       _handlePlayError();
     } else if (player.paused) {
       audioErrorIcon.style.display = 'none';
+      player.load(); // to avoid playing stale data
       player.play();
       playBtn.classList.add('paused');
 
