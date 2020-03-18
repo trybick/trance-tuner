@@ -35,10 +35,10 @@ export const aboutWindow = {
     resizable: false,
   },
   product_name: 'Tray Tuner',
-  description: 'Audio Streaming Utility',
+  description: 'Audio Streaming Application',
   bug_report_url: 'https://github.com/trybick/tray-tuner/issues',
   bug_link_text: 'Feedback',
-  copyright: 'Copyright (c) 2020 Tim Rybicki',
+  copyright: 'Icons from https://icons8.com',
   homepage: 'https://github.com/trybick/tray-tuner',
   license: 'MIT',
 };
