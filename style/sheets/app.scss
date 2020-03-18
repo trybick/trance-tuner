@@ -2,6 +2,14 @@
 
 body {
   background-color: $base;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  animation: fadein 0.5s;
 }
 
 .app-container {
@@ -9,4 +17,3 @@ body {
   margin: 0 auto;
   max-width: 490px;
 }
-
