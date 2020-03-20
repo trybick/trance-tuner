@@ -27,7 +27,7 @@
     "package-linux": "electron-packager . --platform=linux --out=packages --overwrite --icon=images/music-record.ico",
     "package-mac": "electron-packager . --platform=darwin --out=packages --overwrite --icon=images/music-record.icns",
     "package-windows": "electron-packager . --platform=win32 --out=packages --overwrite --icon=images/music-record.ico",
-    "package-all": "npm run build && npm run package-linux && npm run package-mac && npm run package-windows"
+    "package-all": "npm --no-git-tag-version version patch && npm run build && npm run package-linux && npm run package-mac && npm run package-windows"
   },
   "dependencies": {
     "about-window": "^1.13.2",
