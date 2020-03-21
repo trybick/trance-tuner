@@ -2,11 +2,11 @@ import { app, BrowserWindow, globalShortcut, ipcMain, Menu, nativeImage, Tray } 
 import prompt from 'electron-prompt';
 import openAboutWindow from 'about-window';
 import * as path from 'path';
-const os = require('os');
 import {
   aboutWindow,
   audioSourceDialog,
-  mainImages,
+  isMac,
+  icons,
   store,
   randomSources,
   windowHeightWithDrawerClosed,
@@ -66,7 +66,7 @@ function createTray() {
     },
   ]);
 
-  tray = new Tray(mainImages.playIcon);
+  tray = new Tray(isMac ? icons.mac.play : icons.nonMac.play);
   tray.setToolTip('Tray Tuner');
   tray.setIgnoreDoubleClickEvents(true);
 
@@ -85,10 +85,10 @@ function createTray() {
 ipcMain.on('asynchronous-message', (event, arg) => {
   switch (arg) {
     case 'set-tray-play':
-      tray.setImage(mainImages.playIcon);
+      isMac ? tray.setImage(icons.mac.play) : tray.setImage(icons.nonMac.play);
       break;
     case 'set-tray-pause':
-      tray.setImage(mainImages.pauseIcon);
+      isMac ? tray.setImage(icons.mac.pause) : tray.setImage(icons.nonMac.pause);
       break;
     case 'toggle-dock-setting':
       _toggleDockSetting();
@@ -119,7 +119,7 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 // Listener Helpers
 // **
 function _toggleDockSetting() {
-  if (process.platform !== 'darwin') return;
+  if (!isMac) return;
 
   if (hideInDock === false) {
     app.dock.hide();
