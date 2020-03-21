@@ -114,6 +114,7 @@ function editAudioSource() {
 }
 
 function setRandomSource() {
+  const wasPlaying = !player.paused;
   _resetAudioState();
 
   // To avoid repeats, pick first item and move it to last
@@ -128,6 +129,7 @@ function setRandomSource() {
 
   player.src = newRandom;
   audioSourceDisplay.textContent = _createCleanDisplaySource(newRandom);
+  wasPlaying && togglePlay();
 
   // I don't love this
   if (newRandom.includes('revolution')) {
