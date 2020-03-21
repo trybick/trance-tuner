@@ -2,7 +2,9 @@
 
 Control online radio streams from your system tray (macOS, Windows, & Linux).
 
-![app screenshot](images/app.png)
+<p align="center">
+  <img src="images/app.png" alt="app screenshot">
+</p>
 
 ## Usage
 
