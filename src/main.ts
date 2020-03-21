@@ -24,7 +24,7 @@ function createMainWindow() {
   mainWindow = new BrowserWindow({
     height: windowHeightWithDrawerClosed,
     width: 310,
-    icon: __dirname + '/images/music-record.ico',
+    icon: __dirname + '/images/music-record-258.ico',
     webPreferences: {
       nodeIntegration: true,
     },
@@ -32,7 +32,7 @@ function createMainWindow() {
 
   mainWindow.loadFile(path.join(__dirname, '../index.html'));
 
-  const iconPath = path.join(__dirname, 'images/music-record.png');
+  const iconPath = path.join(__dirname, 'images/music-record-258.png');
   const nimage = nativeImage.createFromPath(iconPath);
   mainWindow.setIcon(nimage);
 
