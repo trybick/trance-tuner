@@ -34,7 +34,7 @@ ipc.on('tray-clicked', () => {
   togglePlay();
 });
 
-ipc.on('dock-setting-enabled', () => {
+ipc.on('load-dock-setting-enabled', () => {
   dockSettingCheckbox.checked = true;
 });
 
@@ -47,7 +47,7 @@ ipc.on('kbd-random-source', () => {
   togglePlay();
 });
 
-ipc.on('source-update', (e, savedSource) => {
+ipc.on('load-source-update', (e, savedSource) => {
   player.src = savedSource;
   audioSourceDisplay.textContent = _createCleanDisplaySource(savedSource);
 });

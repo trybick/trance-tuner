@@ -114,6 +114,8 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 // Listener Helpers
 // **
 function _toggleDockSetting() {
+  if (process.platform !== 'darwin') return;
+
   if (hideInDock === false) {
     app.dock.hide();
     hideInDock = true;
@@ -152,10 +154,10 @@ function loadSettings() {
     if (shouldHideDock) {
       app.dock.hide();
       hideInDock = true;
-      mainWindow.webContents.send('dock-setting-enabled');
+      mainWindow.webContents.send('load-dock-setting-enabled');
     }
     if (audioSource) {
-      mainWindow.webContents.send('source-update', audioSource);
+      mainWindow.webContents.send('load-source-update', audioSource);
     }
   });
 }
@@ -183,6 +185,7 @@ function registerKeyboardShortcuts() {
 // **
 app.on('ready', () => {
   createTray();
+  Menu.setApplicationMenu(null);
   createMainWindow();
   loadSettings();
   registerKeyboardShortcuts();
