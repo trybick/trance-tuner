@@ -1,7 +1,8 @@
-import { app, BrowserWindow, globalShortcut, ipcMain, Menu, Tray } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain, Menu, nativeImage, Tray } from 'electron';
 import prompt from 'electron-prompt';
 import openAboutWindow from 'about-window';
 import * as path from 'path';
+const os = require('os');
 import {
   aboutWindow,
   audioSourceDialog,
@@ -30,6 +31,10 @@ function createMainWindow() {
   });
 
   mainWindow.loadFile(path.join(__dirname, '../index.html'));
+
+  const iconPath = path.join(__dirname, 'images/music-record.png');
+  const nimage = nativeImage.createFromPath(iconPath);
+  mainWindow.setIcon(nimage);
 
   mainWindow.on('close', (e: Event) => {
     mainWindow.hide();
