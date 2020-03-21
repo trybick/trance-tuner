@@ -6,7 +6,7 @@ Control online radio streams from your system tray (macOS, Windows, & Linux).
 
 ### Controlling Music
 
-Pausing/playing the music can be done by:
+Pausing/playing can be done by:
 
 - Clicking the tray icon
 - Clicking the pause/play icon in the Application UI
@@ -14,11 +14,11 @@ Pausing/playing the music can be done by:
 
 ### Keyboard Shortcuts
 
-`CmdOrCtrl + Ctrl + Shift + Z` - Pause/play the music
+`Ctrl + Alt + Shift + Z` - Pause/play
 
-`CmdOrCtrl + Ctrl + Shift + W` - Bring the app into focus
+`Ctrl + Alt + Shift + W` - Bring the app into focus
 
-`CmdOrCtrl + Ctrl + Shift + R` - Play one of the built-in random streams
+`Ctrl + Alt + Shift + R` - Play one of the built-in random streams
 
 ### Addding an Audio Source
 

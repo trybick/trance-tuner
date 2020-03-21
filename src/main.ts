@@ -172,15 +172,15 @@ function loadSettings() {
 //
 
 function registerKeyboardShortcuts() {
-  globalShortcut.register('CommandOrControl+Ctrl+Shift+Z', () => {
+  globalShortcut.register('Ctrl+Alt+Shift+Z', () => {
     mainWindow.webContents.send('kbd-toggle-play');
   });
 
-  globalShortcut.register('CommandOrControl+Ctrl+Shift+R', () => {
+  globalShortcut.register('Ctrl+Alt+Shift+R', () => {
     mainWindow.webContents.send('kbd-random-source');
   });
 
-  globalShortcut.register('CommandOrControl+Ctrl+Shift+W', () => {
+  globalShortcut.register('Ctrl+Alt+Shift+W', () => {
     mainWindow.show();
   });
 }
