@@ -2,6 +2,8 @@
 
 Control online radio streams from your system tray (macOS, Windows, & Linux).
 
+![app screenshot](images/app.png)
+
 ## Usage
 
 ### Controlling Music
@@ -20,7 +22,7 @@ Pausing/playing can be done by:
 
 `Ctrl + Alt + Shift + R` - Play one of the built-in random streams
 
-### Addding an Audio Source
+### Addding Audio Source
 
 To add an audio stream click the "Edit" button and enter a URL in the dialog box. This URL is saved and will be loaded whenever you start the application.
 
