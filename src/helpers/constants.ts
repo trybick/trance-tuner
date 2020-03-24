@@ -17,7 +17,7 @@ export const icons = {
     pause: path.join(__dirname, '../../images/mac-pause.png'),
   },
   nonMac: {
-    play: path.join(__dirname, '../../images/default-play.png'),
+    play: path.join(__dirname, '../../images/default-play3.png'),
     pause: path.join(__dirname, '../../images/default-pause.png'),
   },
   all: {

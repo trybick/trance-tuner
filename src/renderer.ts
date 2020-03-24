@@ -114,17 +114,8 @@ function editAudioSource() {
 
 function setRandomSource() {
   const wasPlaying = !player.paused;
+  const newRandom = _getNewRandomSource();
   _resetAudioState();
-
-  // To avoid repeats, pick first item and move it to last
-  let newRandom = randomSourcesArray[0];
-  randomSourcesArray.push(randomSourcesArray.shift());
-
-  // Check if this source is currently set
-  if (newRandom === player.src) {
-    newRandom = randomSourcesArray[0];
-    randomSourcesArray.push(randomSourcesArray.shift());
-  }
 
   player.src = newRandom;
   audioSourceDisplay.textContent = _createCleanDisplaySource(newRandom);
@@ -145,6 +136,7 @@ function _resetAudioState() {
     player.pause();
     playBtn.classList.add('paused');
   }
+
   audioErrorIcon.style.display = 'none';
   playBtn.classList.remove('paused');
   ipc.send('asynchronous-message', 'set-tray-play');
@@ -156,7 +148,19 @@ function _handlePlayError() {
   audioErrorIcon.style.display = 'block';
 }
 
-// Remove https:// from URL for display
+// Remove https:// from URL
 function _createCleanDisplaySource(url: string) {
   return url.replace(/(^\w+:|^)\/\//, '');
+}
+
+function _getNewRandomSource() {
+  let newRandom = randomSourcesArray[0];
+  randomSourcesArray.push(randomSourcesArray.shift());
+
+  if (newRandom === player.src) {
+    newRandom = randomSourcesArray[0];
+    randomSourcesArray.push(randomSourcesArray.shift());
+  }
+
+  return newRandom;
 }
