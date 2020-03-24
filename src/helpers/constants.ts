@@ -13,15 +13,17 @@ export const randomSources = {
 
 export const icons = {
   mac: {
-    play: path.join(__dirname, '../../images/mac-play.png'),
-    pause: path.join(__dirname, '../../images/mac-pause.png'),
+    musicRecord: path.join(__dirname + '/images/music-record.ico'),
+    play: path.join(__dirname, '../../images/mac/play.png'),
+    pause: path.join(__dirname, '../../images/mac/pause.png'),
   },
   nonMac: {
-    play: path.join(__dirname, '../../images/default-play3.png'),
-    pause: path.join(__dirname, '../../images/default-pause.png'),
+    musicRecord: path.join(__dirname + '/images/music-record-258.png'),
+    play: path.join(__dirname, '../../images/nonMac/play.png'),
+    pause: path.join(__dirname, '../../images/nonMac/pause.png'),
   },
   all: {
-    aboutIcon: path.join(__dirname, '../../images/about-icon.png'),
+    aboutLogo: path.join(__dirname, '../../images/about-logo.png'),
   },
 };
 
@@ -36,7 +38,7 @@ export const audioSourceDialog = {
 };
 
 export const aboutWindow = {
-  icon_path: icons.all.aboutIcon,
+  icon_path: icons.all.aboutLogo,
   package_json_dir: path.join(__dirname, '../../'),
   win_options: {
     title: 'Tray Tuner - About',

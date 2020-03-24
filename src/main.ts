@@ -1,4 +1,4 @@
-import { app, BrowserWindow, globalShortcut, ipcMain, Menu, nativeImage, Tray } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain, Menu, Tray } from 'electron';
 import prompt from 'electron-prompt';
 import openAboutWindow from 'about-window';
 import * as path from 'path';
@@ -24,17 +24,13 @@ function createMainWindow() {
   mainWindow = new BrowserWindow({
     height: windowHeightWithDrawerClosed,
     width: 310,
-    icon: __dirname + '/images/music-record-258.ico',
+    icon: isMac ? icons.mac.musicRecord : icons.nonMac.musicRecord,
     webPreferences: {
       nodeIntegration: true,
     },
   });
 
   mainWindow.loadFile(path.join(__dirname, '../index.html'));
-
-  const iconPath = path.join(__dirname, 'images/music-record-258.png');
-  const nimage = nativeImage.createFromPath(iconPath);
-  mainWindow.setIcon(nimage);
 
   mainWindow.on('close', (e: Event) => {
     mainWindow.hide();
