@@ -139,7 +139,7 @@ function _openEditAudioDialog() {
         url = 'http://'.concat(url);
       }
       store.set('audio.source', url);
-      mainWindow.webContents.send('source-update', url);
+      mainWindow.webContents.send('load-source-update', url);
     })
     .catch(console.error);
 }
