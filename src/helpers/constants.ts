@@ -6,7 +6,7 @@ export const isMac = process.platform === 'darwin';
 export const windowHeightWithDrawerClosed = 425;
 
 export const randomSources = {
-  ahFm: 'http://us2.ah.fm/192k/;stream/1',
+  ahFm: 'http://fr.ah.fm:8000/192k/;stream/1',
   revolutionRadio: 'https://revolutionradio.ru:8443/live.mp3',
   moveDaHouse: 'https://uk7.internet-radio.com/proxy/movedahouse?mp=/stream',
 };
