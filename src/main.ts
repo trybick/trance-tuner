@@ -63,7 +63,7 @@ function createTray() {
   ]);
 
   tray = new Tray(isMac ? icons.mac.play : icons.nonMac.play);
-  tray.setToolTip('Tray Tuner');
+  tray.setToolTip('Trance Tuner');
   tray.setIgnoreDoubleClickEvents(true);
 
   tray.on('click', () => {

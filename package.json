@@ -1,24 +1,25 @@
 {
-  "name": "tray-tuner",
-  "productName": "Tray Tuner",
+  "name": "trance-tuner",
+  "productName": "Trance Tuner",
   "version": "1.1.0",
   "description": "Control radio streams from system tray",
   "author": "Tim Rybicki",
   "license": "MIT",
   "main": "./dist/main.js",
   "bugs": {
-    "url": "https://github.com/trybick/tray-tuner/issues"
+    "url": "https://github.com/trybick/trance-tuner/issues"
   },
-  "homepage": "https://github.com/trybick/tray-tuner",
+  "homepage": "https://github.com/trybick/trance-tuner",
   "repository": {
     "type": "git",
-    "url": "https://github.com/trybick/tray-tuner"
+    "url": "https://github.com/trybick/trance-tuner"
   },
   "keywords": [
     "electron",
     "tray",
     "radio",
-    "music"
+    "music",
+    "trance"
   ],
   "scripts": {
     "build": "npm run sass && tsc",

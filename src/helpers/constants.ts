@@ -28,7 +28,7 @@ export const icons = {
 };
 
 export const audioSourceDialog = {
-  title: 'Tray Tuner',
+  title: 'Trance Tuner',
   label: 'Audio URL:',
   value: 'http://example.org',
   inputAttrs: {
@@ -41,14 +41,14 @@ export const aboutWindow = {
   icon_path: icons.all.aboutLogo,
   package_json_dir: path.join(__dirname, '../../'),
   win_options: {
-    title: 'Tray Tuner - About',
+    title: 'Trance Tuner - About',
     resizable: false,
   },
-  product_name: 'Tray Tuner',
+  product_name: 'Trance Tuner',
   description: 'Audio Streaming Application',
-  bug_report_url: 'https://github.com/trybick/tray-tuner/issues',
+  bug_report_url: 'https://github.com/trybick/trance-tuner/issues',
   bug_link_text: 'Feedback',
   copyright: 'Icons from icons8.com',
-  homepage: 'https://github.com/trybick/tray-tuner',
+  homepage: 'https://github.com/trybick/trance-tuner',
   license: 'MIT',
 };

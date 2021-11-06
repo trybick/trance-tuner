@@ -1,6 +1,10 @@
-# Tray Tuner
+# Trance Tuner
 
-Control online radio streams from your system tray (macOS, Windows, & Linux).
+Desktop application that plays your favorite trance stations including:
+
+- [ah.fm](http://ah.fm/forum/)
+- [Revolution Radio](https://revolutionradio.ru/)
+- [MoveDaHouse](https://www.movedahouse.com/)
 
 <p align="center">
   <img src="images/screenshots/app-window.png" alt="app screenshot">
@@ -8,8 +12,13 @@ Control online radio streams from your system tray (macOS, Windows, & Linux).
 
 ## Documentation
 
-Please visit us at [traytuner.com/docs/](https://traytuner.com/docs/).
+Please visit our [website](https://trancetuner.netlify.app/docs/).
 
 ## Local Development
 
-This is an electron application written in TypeScript. Clone the repo and run `npm run start` to run the application locally.
+This is an electron application written in TypeScript. To start the project locally, run:
+
+```terminal
+npm i
+npm start
+```
