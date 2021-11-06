@@ -1,19 +1,5 @@
 {
-  "name": "tray-tuner-website",
-  "description": "Website for Tray Tuner, a desktop audio application",
-  "version": "1.0.0",
-  "author": "Tim Rybicki",
-  "keywords": [
-    "tray tuner",
-    "music player",
-    "audio streaming",
-    "gatsby"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/trybick/tray-tuner-website"
-  },
+  "name": "trance-tuner-website",
   "scripts": {
     "build": "gatsby build",
     "format": "prettier --write src/**/*.{js,jsx}",
