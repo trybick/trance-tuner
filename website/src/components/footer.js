@@ -13,7 +13,7 @@ const Footer = ({ siteTitle }) => (
   >
     <div className="footer">
       <div className="contact-us">
-        <a style={{ textDecoration: 'none' }} href="https://github.com/trybick/tray-tuner">
+        <a style={{ textDecoration: 'none' }} href="https://github.com/trybick/trance-tuner">
           <img className="github-icon" src={returnIcon} alt="return" />
           GitHub
         </a>

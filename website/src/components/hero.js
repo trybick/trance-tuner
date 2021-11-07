@@ -3,7 +3,7 @@ import headerImage from '../images/header.png';
 import appScreenshot from '../images/screenshots/app-window.png';
 import Button from './button';
 
-const downloadsLink = 'https://github.com/trybick/tray-tuner/releases';
+const downloadsLink = 'https://github.com/trybick/trance-tuner/releases';
 
 const Header = () => (
   <div

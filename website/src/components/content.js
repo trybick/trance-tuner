@@ -9,7 +9,7 @@ const Content = () => (
       title="Control any audio stream"
       description="Enter any URL or use one of the built-in sources"
     />
-    <content
+    <div
       style={{
         display: 'grid',
         alignItems: 'center',
@@ -30,7 +30,7 @@ const Content = () => (
           alt="a blank card floating over colorful graphics"
         />
       </div>
-    </content>
+    </div>
   </div>
 );
 
