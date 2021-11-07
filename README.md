@@ -7,7 +7,7 @@ Desktop application that plays your favorite trance stations including:
 - [MoveDaHouse](https://www.movedahouse.com/)
 
 <p align="center">
-  <img src="images/screenshots/app-window.png" alt="app screenshot">
+  <img src="electron/images/screenshots/app-window.png" alt="app screenshot">
 </p>
 
 ## Documentation
@@ -19,6 +19,7 @@ Please visit our [website](https://trancetuner.netlify.app/docs/).
 This is an electron application written in TypeScript. To start the project locally, run:
 
 ```terminal
+cd electron
 npm i
 npm start
 ```
