@@ -1,4 +1,4 @@
-# Tray Tuner
+# Trance Tuner
 
 - [Demo](#demo)
 - [Download](#download)
@@ -21,19 +21,19 @@ Download for Mac, Windows, and Linux [here](https://github.com/trybick/trance-tu
 #### macOS
 
 - Extract zip file
-- Copy the Tray Tuner application into the Applications folder
-- Double-click to open. Because the app is not signed (requires \$99/year which I haven't committed to yet), you should receive a warning that this cannot be opened.
+- Copy the Trance Tuner application into the Applications folder
+- Double-click to open. You should receive a warning that this cannot be opened.
 - Go to Systems Preferences --> Security & Privacy --> and click "Open Anyway"
 
 #### Windows
 
 - Extract zip file
-- Double-click TrayTuner.exe to open.
+- Double-click TranceTuner.exe to open.
 
 #### Linux
 
 - Extract zip file
-- Run the executable. For example `./Tray Tuner` in a terminal.
+- Run the executable. For example `./TranceTuner` in a terminal.
 
 ## Usage <a name="usage"></a>
 
@@ -57,7 +57,7 @@ Play one of the built-in random streams: `Ctrl + Alt + Shift + R`
 
 To add an audio stream click the "Edit" button and enter a URL in the dialog box. This URL is saved and will be loaded whenever you start the application.
 
-Tray Tuner comes with the three radio streams which can be cycled through by clicking the "Random" button.
+Trance Tuner comes with the three radio streams which can be cycled through by clicking the "Random" button.
 
 #### Hide in Dock
 
@@ -67,4 +67,4 @@ Click the chevon button at the bottom of the application to toggle the Settings 
 
 Want to suggest a feature/report a bug? Head over to our [GitHub](https://github.com/trybick/trance-tuner) and open an issue!
 
-Tray Tuner is developed by [Tim Rybicki](https://timr.dev/).
+Trance Tuner is developed by [Tim Rybicki](https://timr.dev/).

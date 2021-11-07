@@ -55,7 +55,7 @@ function createTray() {
     },
     { type: 'separator' },
     {
-      label: 'Quit TrayTuner',
+      label: 'Quit TranceTuner',
       click: async () => {
         app.quit();
       },

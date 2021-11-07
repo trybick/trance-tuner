@@ -25,9 +25,9 @@ const Header = () => (
         opacity: 0.5,
       }}
     />
-    <h1 style={{ textAlign: 'center' }}>Tray Tuner</h1>
+    <h1 style={{ textAlign: 'center' }}>Trance Tuner</h1>
     <p style={{ textAlign: 'center', maxWidth: 440 }}>
-      A desktop application to control online radio streams
+      Desktop application that plays your favorite trance stations
     </p>
     <Button to={downloadsLink}>Download</Button>
     <div className="app-screenshot-wrapper">

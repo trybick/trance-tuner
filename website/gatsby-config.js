@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Tray Tuner`,
-    description: `An audio streaming application for macOS, Windows, & Linux`,
+    title: `Trance Tuner`,
+    description: `Desktop application that plays your favorite trance stations for macOS, Windows, & Linux`,
     author: `@trybick`,
-    siteUrl: `https://traytuner.com/`,
+    siteUrl: `https://trancetuner.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
