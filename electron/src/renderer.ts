@@ -12,6 +12,7 @@ const expandedDrawer = document.getElementById('expanded-drawer') as HTMLDivElem
 const settingsChevron = document.getElementById('chevron-settings') as HTMLImageElement;
 const audioErrorIcon = document.getElementById('audio-error-icon') as HTMLImageElement;
 const volumeFill = document.getElementById('vol-slider-fill') as HTMLDivElement;
+const volumeInput = document.getElementById('vol-slider-input') as HTMLInputElement;
 
 const images = {
   chevronUp: 'images/chevron-up.png',
@@ -45,9 +46,13 @@ ipc.on('kbd-random-source', () => {
   setRandomSource();
 });
 
-ipc.on('load-source-update', (e, savedSource) => {
+ipc.on('load-source-update', (_, savedSource) => {
   player.src = savedSource;
   audioSourceDisplay.textContent = _createCleanDisplaySource(savedSource);
+});
+
+ipc.on('load-volume', (_, volume) => {
+  setVolume(volume, false);
 });
 
 // **
@@ -76,7 +81,7 @@ function togglePlay() {
   }
 }
 
-function setVolume(val: HTMLInputElement['value']) {
+function setVolume(val: HTMLInputElement['value'], shouldUpdate = true) {
   const volume = Number(val);
   let filledVolume = volume;
 
@@ -84,6 +89,10 @@ function setVolume(val: HTMLInputElement['value']) {
 
   player.volume = volume / 100;
   volumeFill.style.width = `${filledVolume}%`;
+  volumeInput.value = String(volume);
+  if (shouldUpdate) {
+    ipc.send('asynchronous-message', 'save-volume', volume);
+  }
 }
 
 function toggleDockSetting() {

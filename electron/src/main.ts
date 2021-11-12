@@ -78,7 +78,7 @@ function createTray() {
 // **
 // Listeners
 // **
-ipcMain.on('asynchronous-message', (event, arg) => {
+ipcMain.on('asynchronous-message', (_, arg, ...rest) => {
   switch (arg) {
     case 'set-tray-play':
       isMac ? tray.setImage(icons.mac.play) : tray.setImage(icons.nonMac.play);
@@ -92,7 +92,6 @@ ipcMain.on('asynchronous-message', (event, arg) => {
     case 'open-edit-audio-dialog':
       _openEditAudioDialog();
       break;
-    // This method of saving default sources = not ideal :)
     case 'save-default-ahFm':
       store.set('audio.source', randomSources.ahFm);
       break;
@@ -107,6 +106,9 @@ ipcMain.on('asynchronous-message', (event, arg) => {
       break;
     case 'increase-window-size':
       mainWindow.setSize(310, 500);
+      break;
+    case 'save-volume':
+      store.set('setting.volume', rest);
       break;
   }
 });
@@ -150,6 +152,7 @@ function _openEditAudioDialog() {
 function loadSettings() {
   const shouldHideDock = store.get('setting.hideDock');
   const audioSource = store.get('audio.source');
+  const volume = store.get('setting.volume')[0];
 
   mainWindow.webContents.on('did-finish-load', () => {
     if (shouldHideDock) {
@@ -159,6 +162,9 @@ function loadSettings() {
     }
     if (audioSource) {
       mainWindow.webContents.send('load-source-update', audioSource);
+    }
+    if (volume) {
+      mainWindow.webContents.send('load-volume', volume);
     }
   });
 }
