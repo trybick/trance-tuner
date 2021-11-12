@@ -26,7 +26,7 @@ const Header = () => (
       }}
     />
     <h1 style={{ textAlign: 'center' }}>Trance Tuner</h1>
-    <p style={{ textAlign: 'center', maxWidth: 440 }}>
+    <p style={{ textAlign: 'center', maxWidth: 500 }}>
       Desktop application that plays your favorite trance stations
     </p>
     <Button to={downloadsLink}>Download</Button>

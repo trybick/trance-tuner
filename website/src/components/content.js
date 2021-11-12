@@ -6,8 +6,8 @@ import trayScreenshot from '../images/screenshots/tray.png';
 const Content = () => (
   <div style={{ padding: '4rem 1rem', textAlign: 'center' }}>
     <SectionHeader
-      title="Control any audio stream"
-      description="Enter any URL or use one of the built-in sources"
+      title="Three pre-built in stations"
+      description="Use one of the included stations or easily add your own"
     />
     <div
       style={{
