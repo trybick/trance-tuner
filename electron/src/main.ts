@@ -150,9 +150,9 @@ function _openEditAudioDialog() {
 // Load Settings
 // **
 function loadSettings() {
-  const shouldHideDock = store.get('setting.hideDock');
-  const audioSource = store.get('audio.source');
-  const volume = store.get('setting.volume')[0];
+  const shouldHideDock = store.get('setting.hideDock', null);
+  const audioSource = store.get('audio.source', null);
+  const volume = store.get('setting.volume', null);
 
   mainWindow.webContents.on('did-finish-load', () => {
     if (shouldHideDock) {
@@ -164,7 +164,7 @@ function loadSettings() {
       mainWindow.webContents.send('load-source-update', audioSource);
     }
     if (volume) {
-      mainWindow.webContents.send('load-volume', volume);
+      mainWindow.webContents.send('load-volume', volume[0]);
     }
   });
 }
