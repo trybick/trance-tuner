@@ -1,13 +1,15 @@
 # Trance Tuner
 
-Desktop application that plays your favorite trance stations including:
+Desktop application that plays your favorite trance stations including (or add your own):
 
 - [ah.fm](http://ah.fm/forum/)
 - [Revolution Radio](https://revolutionradio.ru/)
 - [MoveDaHouse](https://www.movedahouse.com/)
 
+## Demo
+
 <p align="center">
-  <img src="electron/images/screenshots/app-window.png" alt="app screenshot">
+  <img src="https://imgur.com/oCGfULa.gif" alt="app screenshot"  height="600px">
 </p>
 
 ## Documentation

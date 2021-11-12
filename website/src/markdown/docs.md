@@ -9,7 +9,7 @@
 ## Demo <a name="demo"></a>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/39889198/77856350-8826e300-71c4-11ea-9ee1-84aa5f974a7e.gif" alt="demo video">
+  <img src="https://imgur.com/oCGfULa.gif" alt="demo video" style="max-height:600px;">
 </p>
 
 ## Download <a name="download"></a>
