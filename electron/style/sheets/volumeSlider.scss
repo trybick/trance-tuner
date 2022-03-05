@@ -23,7 +23,7 @@ $cursor-border: $secondary; // knob border
     box-sizing: border-box;
     display: inline-block;
     left: 0;
-    top: $height/2 - $bar-height/2;
+    top: calc($height/2) - calc($bar-height/2);
     border-radius: $border-radius;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
