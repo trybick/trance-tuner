@@ -5,3 +5,5 @@ packages
 .sass-cache
 .cache
 public
+
+.vscode/**

@@ -14,8 +14,8 @@ export const randomSources = {
 export const icons = {
   mac: {
     musicRecord: path.join(__dirname + '/images/music-record.ico'),
-    play: path.join(__dirname, '../../images/mac/play.png'),
-    pause: path.join(__dirname, '../../images/mac/pause.png'),
+    play: path.join(__dirname, '../../images/mac/PlayTemplate.png'),
+    pause: path.join(__dirname, '../../images/mac/PauseTemplate.png'),
   },
   nonMac: {
     musicRecord: path.join(__dirname + '/images/music-record-258.png'),
