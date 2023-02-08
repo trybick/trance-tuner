@@ -22,6 +22,11 @@ const Layout = ({ children }) => (
       <>
         <Helmet>
           <link rel="icon" href={favicon} />
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "0eea41c860614c6680533b138fc15728"}'
+          ></script>
         </Helmet>
         <div
           style={{
