@@ -23,12 +23,6 @@ const Layout = ({ children }) => (
         <Helmet>
           <link rel="icon" href={favicon} />
           {/* eslint-disable-next-line react/self-closing-comp */}
-          <script
-            defer
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "0eea41c860614c6680533b138fc15728"}'
-            // eslint-disable-next-line react/self-closing-comp, react/jsx-closing-tag-location
-          ></script>
         </Helmet>
         <div
           style={{
